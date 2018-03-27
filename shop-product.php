@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 // array to hold items for each row from data base
 $items = array();
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name, price, color FROM shopapparel where name = '$val' ";
+$sql = "SELECT Distinct name, price, color, type FROM shopapparel where name = '$val' ";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"], "type" => $row["type"]);
     }
     // if no rows 
 } else {
@@ -39,7 +39,7 @@ $conn->close();
 
 
 
-echo $val . " : was selected";
+//echo $val . " : was selected";
 
 
 
@@ -494,10 +494,10 @@ $size = array("M", "L", "XL");
 													<img src="images/product-1.jpg" alt="">
 													<a href="images/product-1.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
 												</div>
-												<div class="overlay-container overlay-visible">
+											<!-- 	<div class="overlay-container overlay-visible">
 													<img src="images/product-1-2.jpg" alt="">
 													<a href="images/product-1-2.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<!-- <div class="tab-pane" id="pill-2">
@@ -511,6 +511,7 @@ $size = array("M", "L", "XL");
 								</div>
 								<div class="col-md-8 pv-30">
 									<?php echo "<h1>" . $items[0]['name'] . "</h1>"  ?>
+									<?php echo "<p>" . $items[0]['type']. "</p>"; ?>
 							<!-- 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem debitis enim facilis porro quia in voluptates praesentium, cupiditate, dolorum. Facilis minus, quidem! Id perspiciatis labore praesentium voluptatibus assumenda odio, magni.</p>
 									<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit</h4>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint beatae delectus obcaecati eveniet nulla voluptate odio est laborum veniam? Natus nemo provident, voluptate molestias sint, nam dolor blanditiis minus!</p> -->
@@ -626,17 +627,19 @@ $size = array("M", "L", "XL");
 
 			<!-- section start -->
 			<!-- ================ -->
-			<section class="pv-30 light-gray-bg">
-				<div class="container">
+
+			<!-- iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii          rating and comments -->
+		<!-- <section class="pv-30 light-gray-bg"> 				
+			<div class="container">
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-8"> -->
 							<!-- Nav tabs -->
-							<ul class="nav nav-tabs style-4" role="tablist">
+							<!-- <ul class="nav nav-tabs style-4" role="tablist">
 								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Specifications</a></li>
 								<li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>(3) Reviews</a></li>
-							</ul>
+							</ul> -->
 							<!-- Tab panes -->
-							<div class="tab-content padding-top-clear padding-bottom-clear">
+							<!-- <div class="tab-content padding-top-clear padding-bottom-clear">
 								<div class="tab-pane fade in active" id="h2tab2">
 									<h4 class="space-top">Specifications</h4>
 									<hr>
@@ -656,32 +659,32 @@ $size = array("M", "L", "XL");
 										<dd>Tempora rerum veritatis nam blanditiis.</dd>
 										<dt>Werspiciatis</dt>
 										<dd>Rem nostrum sit magnam debitis quidem perspiciatis fuga fugit.</dd>
-									</dl>
-									<hr>
+									</dl> -->
+									<!-- <hr>
 								</div>
-								<div class="tab-pane fade" id="h2tab3">
+								<div class="tab-pane fade" id="h2tab3"> -->
 									<!-- comments start -->
-									<div class="comments margin-clear space-top">
+									<!-- <div class="comments margin-clear space-top"> -->
 										<!-- comment start -->
-										<div class="comment clearfix">
+										<!-- <div class="comment clearfix">
 											<div class="comment-avatar">
 												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
 											</div>
 											<header>
-												<h3>Amazing!</h3>
-												<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 12:31</div>
-											</header>
-											<div class="comment-content">
+												<h3>Amazing!</h3> -->
+												<!-- <div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 12:31</div>
+											</header> -->
+									<!-- 		<div class="comment-content">
 												<div class="comment-body clearfix">
 													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
 													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- comment end -->
 
 										<!-- comment start -->
-										<div class="comment clearfix">
+										<!-- <div class="comment clearfix">
 											<div class="comment-avatar">
 												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
 											</div>
@@ -695,11 +698,11 @@ $size = array("M", "L", "XL");
 													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- comment end -->
 
 										<!-- comment start -->
-										<div class="comment clearfix">
+									<!-- 	<div class="comment clearfix">
 											<div class="comment-avatar">
 												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
 											</div>
@@ -713,13 +716,13 @@ $size = array("M", "L", "XL");
 													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<!-- comment end -->
-									</div>
+									<!-- </div> -->
 									<!-- comments end -->
 
 									<!-- comments form start -->
-									<div class="comments-form">
+									<!-- <div class="comments-form">
 										<h2 class="title">Add your Review</h2>
 										<form role="form" id="comment-form">
 											<div class="form-group has-feedback">
@@ -741,26 +744,26 @@ $size = array("M", "L", "XL");
 													<option value="two">2</option>
 													<option value="one">1</option>
 												</select>
-											</div>
-											<div class="form-group has-feedback">
+											</div> -->
+									<!-- 		<div class="form-group has-feedback">
 												<label for="message4">Message</label>
 												<textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>
 												<i class="fa fa-envelope-o form-control-feedback"></i>
 											</div>
 											<input type="submit" value="Submit" class="btn btn-default">
 										</form>
-									</div>
+									</div> -->
 									<!-- comments form end -->
-								</div>
+						<!-- 		</div>
 							</div>
-						</div>
+						</div> -->
 
 						<!-- sidebar start -->
 	
 
-					</div>
+			<!-- 		</div>
 				</div>
-			</section>
+			</section> -->
 			<!-- section end -->
 
 			<!-- section start -->

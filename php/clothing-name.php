@@ -29,6 +29,9 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
       
     	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"]);
+
+
+    
     }
     // if no rows 
 } else {

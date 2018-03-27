@@ -123,7 +123,7 @@
 									<ul class="list-inline hidden-sm hidden-xs">
 										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One infinity loop, 54100</li>
 										<li><i class="fa fa-phone pr-5 pl-10"></i>+00 1234567890</li>
-										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> theproject@mail.com</li>
+										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> oops.clothing@gmail.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
@@ -486,6 +486,8 @@
 								<div class="tab-pane active" id="pill-1">						
 									<div class="row masonry-grid-fitrows grid-space-10">
 										<?php
+										if (isset($items[0]['name'])) {
+									
 										for ($i=0; $i <count($items) ; $i++) { 
 									
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
@@ -514,15 +516,11 @@
 											</div>
 										</div>';
 									}
+									
+										}
 										?>
 
 										
-									
-						
-							
-						
-							
-								
 									</div>
 								</div>
 							
