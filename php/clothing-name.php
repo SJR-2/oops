@@ -31,7 +31,7 @@ if ($result->num_rows > 0) {
     	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"]);
 
 
-    
+     
     }
     // if no rows 
 } else {
