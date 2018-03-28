@@ -638,10 +638,14 @@ $size = array("M", "L", "XL");
 							<ul class="nav nav-tabs style-4" role="tablist">
 								<!-- <li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Specifications</a></li> -->
 									<?php 
+									$val = $_GET["item"];
 									include("php/clothing-rating.php");
 									$totalReviews =0;
 									for ($i=0; $i <count($review) ; $i++) { 
+											if ($review[$i]["productname"] == $val) {
+								
 										$totalReviews++;
+									}
 									}
 									
 							echo	'<li class="active"><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>('.$totalReviews.') Reviews</a></li>';
@@ -675,9 +679,10 @@ $size = array("M", "L", "XL");
 									<!-- comments start -->
 									<?php 
 									include("php/clothing-rating.php");
+									$val = $_GET["item"];
 									for ($i=0; $i <count($review) ; $i++) { 
 								
-									if (isset($review)) {
+									if (isset($review) && $review[$i]['productname'] == $val) {
 									
 									
 								echo '<div class="comments margin-clear space-top">
@@ -721,12 +726,12 @@ $size = array("M", "L", "XL");
 											</div>
 											<div class="form-group">
 												<label>Rating</label>
-												<select class="form-control" id="review">
-													<option value="five">5</option>
-													<option value="four">4</option>
-													<option value="three">3</option>
-													<option value="two">2</option>
-													<option value="one">1</option>
+												<select class="form-control" name="review" id="review">
+													<option value=5>5</option>
+													<option value=4>4</option>
+													<option value=3>3</option>
+													<option value=2>2</option>
+													<option value=1>1</option>
 												</select>
 											</div>
 											<div class="form-group has-feedback">
@@ -734,7 +739,19 @@ $size = array("M", "L", "XL");
 												<textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>
 												<i class="fa fa-envelope-o form-control-feedback"></i>
 											</div>
-											<input type="submit" value="Submit" class="btn btn-default">
+											<div class="form-group">
+												<legend>Would you buy again</legend>
+												<label >Yes</label>
+												<input type="radio" name="buyAgain" id="radio1" value="true">
+												<label>No</label>
+												<input type="radio" name="buyAgain" id="radio2" value="false">
+
+											</div>	
+											<?php
+											$val = $_GET["item"];
+			                               echo '<input type="hidden" name="clothingname" value="'.$val.'">';
+											echo '<input type="submit" value="submit" name="s1" class="btn btn-default">';
+											?>
 										</form>
 									</div>
 									<!-- comments form end -->
@@ -743,7 +760,7 @@ $size = array("M", "L", "XL");
 						</div>
 
 						<!-- sidebar start -->
-	
+
 
 					</div>
 				</div>
