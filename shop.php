@@ -517,7 +517,7 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills" role="tablist">
 								<li class="active"><a href="#pill-1" role="tab" data-toggle="tab" title="Latest Arrivals"><i class="icon-star"></i> Latest Arrivals</a></li>
-								<li><a href="#pill-2" role="tab" data-toggle="tab" title="Price"><i class="icon-up-1"></i>Price</a></li>
+								<li><a href="#pill-2" role="tab" data-toggle="tab" title="Lowest-Highest"><i class="icon-up-1"></i>Price</a></li>
 								<li><a href="#pill-3" role="tab" data-toggle="tab" title="Top Sellers"><i class=" icon-heart"></i> Top Sellers</a></li>
 <div class="dropdown" style="padding-top: 6px;">
 								<li class="dropbtn"><a href="#pill-4" role="tab" data-toggle="tab" title="Category"><i class=" icon-search"></i>Category</a>
@@ -583,15 +583,61 @@
 								<div class="tab-pane" id="pill-2">
 							<div class="row masonry-grid-fitrows grid-space-10">
 										<?php
-array_multisort(array_column($items, 'price'),  SORT_ASC);
+										
+// gets server information
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
 
-										if (isset($items[0]['name'])) {
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// array to hold items for each row from data base
+$items = array();
+
+
+
+// selecting only name and price to display on shop page
+$sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
+$result = $conn->query($sql);
+
+// loops through rows until there is 0 rows
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+
+
+
+    }
+    // if no rows 
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+
+						if (isset($items[0]['name'])) {
 									
 										for ($i=0; $i <count($items) ; $i++) { 
 									
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
+
 											echo '<div class="overlay-container">';
+											if ($items[$i]['stock'] ==0) {
+													echo  '<span class="badge">SOLD OUT</span>';
+											}else{
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
+											}
+										
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
@@ -616,7 +662,9 @@ array_multisort(array_column($items, 'price'),  SORT_ASC);
 										</div>';
 									}
 
-										}
+										}				
+
+										
 										?>
 
 										

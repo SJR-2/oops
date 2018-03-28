@@ -495,11 +495,31 @@ $size = array("M", "L", "XL");
 													<img src="images/product-1.jpg" alt="">
 													<a href="images/product-1.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
 												</div>
+
 											<!-- 	<div class="overlay-container overlay-visible">
 													<img src="images/product-1-2.jpg" alt="">
 													<a href="images/product-1-2.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
 												</div> -->
 											</div>
+														<?php
+											$val = $_GET["item"];
+								
+	
+											
+											include("php/clothing-rating.php");
+											$buyAgain=0;
+											$notBuyAgian =0;
+											for ($x=0; $x <count($review) ; $x++) { 
+
+										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
+												$buyAgain++;
+											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+											$notBuyAgian++;
+											}
+											}
+										$notBuyAgian = $buyAgain + $notBuyAgian;
+											echo '<span><strong>'.$buyAgain.' out of '.$notBuyAgian. ' customers would buy this product again<strong></span>';
+												?>
 										</div>
 										<!-- <div class="tab-pane" id="pill-2">
 											<div class="embed-responsive embed-responsive-16by9">
@@ -510,6 +530,7 @@ $size = array("M", "L", "XL");
 									</div>
 									<!-- pills end -->
 								</div>
+					
 								<div class="col-md-8 pv-30">
 									<?php echo "<h1>" . $items[0]['name'] . "</h1>"  ?>
 									<?php echo "<p>" . $items[0]['type']. "</p>"; ?>
@@ -518,13 +539,45 @@ $size = array("M", "L", "XL");
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint beatae delectus obcaecati eveniet nulla voluptate odio est laborum veniam? Natus nemo provident, voluptate molestias sint, nam dolor blanditiis minus!</p> -->
 									<hr class="mb-10">
 									<div class="clearfix mb-20">
-										<span>
-											<i class="fa fa-star text-default"></i>
-											<i class="fa fa-star text-default"></i>
-											<i class="fa fa-star text-default"></i>
-											<i class="fa fa-star text-default"></i>
-											<i class="fa fa-star"></i>
-										</span>
+										<?php
+											$val = $_GET["item"];
+								
+	
+											
+											include("php/clothing-rating.php");
+											$totalRating =0;
+											$averageRating=0;
+											for ($x=0; $x <count($review) ; $x++) { 
+												# code...
+											
+											if ($review[$x]["productname"] == $val) {
+												# code...
+											
+											for ($i=0; $i <count($review) ; $i++) { 
+												$totalRating += $review[$i]["rating"];
+											}
+
+											$averageRating = $totalRating/ count($review);
+
+											$averageRating=  round($averageRating);
+
+												echo '<span>';
+
+												for ($x=0; $x <$averageRating ; $x++) { 
+										
+											echo '<i class="fa fa-star text-default"></i> ';
+											}
+											if ($averageRating<5)
+											 {
+												for ($averageRating; $averageRating <5 ; $averageRating++) { 
+													echo '<i class="fa fa-star"></i> ';
+												}
+											}
+										echo '</span>';
+									}
+								}
+										?>
+									
 										<a href="#" class="wishlist"><i class="fa fa-heart-o pl-10 pr-5"></i>Wishlist</a>
 										<ul class="pl-20 pull-right social-links circle small clearfix margin-clear animated-effect-1">
 											<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
@@ -645,6 +698,7 @@ $size = array("M", "L", "XL");
 											if ($review[$i]["productname"] == $val) {
 								
 										$totalReviews++;
+
 									}
 									}
 									
@@ -693,7 +747,19 @@ $size = array("M", "L", "XL");
 											</div>
 											<header>';
 											echo '	<h3>'.$review[$i]['subject'].'</h3>';
-											echo '	<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | '.$review[$i]['username'].'</div>
+											echo '	<div class="comment-meta">';
+											for ($x=0; $x <$review[$i]["rating"] ; $x++) { 
+										
+											echo '<i class="fa fa-star text-default"></i> ';
+											}
+											if ($review[$i]["rating"]<5)
+											 {
+												for ($review[$i]["rating"]; $review[$i]["rating"] <5 ; $review[$i]["rating"]++) { 
+													echo '<i class="fa fa-star"></i> ';
+												}
+											}
+											
+											  echo '| '.$review[$i]['username'].'</div>
 											</header>';
 										echo '<div class="comment-content">
 												<div class="comment-body clearfix">';
