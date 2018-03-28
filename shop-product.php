@@ -1,4 +1,5 @@
 <?php
+
 // get value after link is clicked for out fit
 $val = $_GET["item"];
 
@@ -629,18 +630,26 @@ $size = array("M", "L", "XL");
 			<!-- ================ -->
 
 			<!-- iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii          rating and comments -->
-		<!-- <section class="pv-30 light-gray-bg"> 				
+		<section class="pv-30 light-gray-bg"> 				
 			<div class="container">
 					<div class="row">
-						<div class="col-md-8"> -->
+						<div class="col-md-8">
 							<!-- Nav tabs -->
-							<!-- <ul class="nav nav-tabs style-4" role="tablist">
-								<li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Specifications</a></li>
-								<li><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>(3) Reviews</a></li>
-							</ul> -->
+							<ul class="nav nav-tabs style-4" role="tablist">
+								<!-- <li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Specifications</a></li> -->
+									<?php 
+									include("php/clothing-rating.php");
+									$totalReviews =0;
+									for ($i=0; $i <count($review) ; $i++) { 
+										$totalReviews++;
+									}
+									
+							echo	'<li class="active"><a href="#h2tab3" role="tab" data-toggle="tab"><i class="fa fa-star pr-5"></i>('.$totalReviews.') Reviews</a></li>';
+								?>
+							</ul>
 							<!-- Tab panes -->
-							<!-- <div class="tab-content padding-top-clear padding-bottom-clear">
-								<div class="tab-pane fade in active" id="h2tab2">
+							<div class="tab-content padding-top-clear padding-bottom-clear">
+						<!-- 		<div class="tab-pane fade in active" id="h2tab2">
 									<h4 class="space-top">Specifications</h4>
 									<hr>
 									<dl class="dl-horizontal">
@@ -659,72 +668,47 @@ $size = array("M", "L", "XL");
 										<dd>Tempora rerum veritatis nam blanditiis.</dd>
 										<dt>Werspiciatis</dt>
 										<dd>Rem nostrum sit magnam debitis quidem perspiciatis fuga fugit.</dd>
-									</dl> -->
-									<!-- <hr>
-								</div>
-								<div class="tab-pane fade" id="h2tab3"> -->
+									</dl>
+									<hr>
+								</div> -->
+								<div class="tab-pane fade in active" id="h2tab3">
 									<!-- comments start -->
-									<!-- <div class="comments margin-clear space-top"> -->
+									<?php 
+									include("php/clothing-rating.php");
+									for ($i=0; $i <count($review) ; $i++) { 
+								
+									if (isset($review)) {
+									
+									
+								echo '<div class="comments margin-clear space-top">
 										<!-- comment start -->
-										<!-- <div class="comment clearfix">
+										<div class="comment clearfix">
 											<div class="comment-avatar">
 												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
 											</div>
-											<header>
-												<h3>Amazing!</h3> -->
-												<!-- <div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 12:31</div>
-											</header> -->
-									<!-- 		<div class="comment-content">
-												<div class="comment-body clearfix">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
+											<header>';
+											echo '	<h3>'.$review[$i]['subject'].'</h3>';
+											echo '	<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | '.$review[$i]['username'].'</div>
+											</header>';
+										echo '<div class="comment-content">
+												<div class="comment-body clearfix">';
+												echo '	<p>'.$review[$i]['message'].' </p>
 												</div>
 											</div>
-										</div> -->
+										</div>';
+										}
+
+									}
+										?>
 										<!-- comment end -->
 
-										<!-- comment start -->
-										<!-- <div class="comment clearfix">
-											<div class="comment-avatar">
-												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
-											</div>
-											<header>
-												<h3>Really Nice!</h3>
-												<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 10:31</div>
-											</header>
-											<div class="comment-content">
-												<div class="comment-body clearfix">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
-												</div>
-											</div>
-										</div> -->
-										<!-- comment end -->
 
-										<!-- comment start -->
-									<!-- 	<div class="comment clearfix">
-											<div class="comment-avatar">
-												<img class="img-circle" src="images/avatar.jpg" alt="avatar">
-											</div>
-											<header>
-												<h3>Worth to Buy!</h3>
-												<div class="comment-meta"> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star text-default"></i> <i class="fa fa-star"></i> | Today, 09:31</div>
-											</header>
-											<div class="comment-content">
-												<div class="comment-body clearfix">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo </p>
-													<a href="blog-post.html" class="btn-sm-link link-dark pull-right"><i class="fa fa-reply"></i> Reply</a>
-												</div>
-											</div>
-										</div> -->
-										<!-- comment end -->
-									<!-- </div> -->
-									<!-- comments end -->
+										
 
 									<!-- comments form start -->
-									<!-- <div class="comments-form">
+									<div class="comments-form">
 										<h2 class="title">Add your Review</h2>
-										<form role="form" id="comment-form">
+										<form role="form" id="comment-form" action="php/add-review.php" method="post">
 											<div class="form-group has-feedback">
 												<label for="name4">Name</label>
 												<input type="text" class="form-control" id="name4" placeholder="" name="name4" required>
@@ -744,26 +728,26 @@ $size = array("M", "L", "XL");
 													<option value="two">2</option>
 													<option value="one">1</option>
 												</select>
-											</div> -->
-									<!-- 		<div class="form-group has-feedback">
+											</div>
+											<div class="form-group has-feedback">
 												<label for="message4">Message</label>
 												<textarea class="form-control" rows="8" id="message4" placeholder="" name="message4" required></textarea>
 												<i class="fa fa-envelope-o form-control-feedback"></i>
 											</div>
 											<input type="submit" value="Submit" class="btn btn-default">
 										</form>
-									</div> -->
+									</div>
 									<!-- comments form end -->
-						<!-- 		</div>
+								</div>
 							</div>
-						</div> -->
+						</div>
 
 						<!-- sidebar start -->
 	
 
-			<!-- 		</div>
+					</div>
 				</div>
-			</section> -->
+			</section>
 			<!-- section end -->
 
 			<!-- section start -->
