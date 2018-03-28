@@ -541,7 +541,14 @@
 									
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
+
 											echo '<div class="overlay-container">';
+											if ($items[$i]['stock'] ==0) {
+													echo  '<span class="badge">SOLD OUT</span>';
+											}else{
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
+											}
+										
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
