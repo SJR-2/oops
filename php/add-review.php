@@ -31,10 +31,11 @@ echo $buyagain.'<br>';
 echo $productname;
 
 
-$sql = "INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`) VALUES ('$name','$subject','$rating','$message','$buyagain','$productname')";
+$sql = "INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`) VALUES ('$name','$subject','$rating','$message',$buyagain,'$productname')";
 
 
 if ($conn->query($sql) === TRUE) {
+
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

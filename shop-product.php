@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
     }
     // if no rows 
 } else {
-    echo "0 results";
+   // echo "0 results";
 }
 
 
@@ -507,18 +507,18 @@ $size = array("M", "L", "XL");
 	
 											
 											include("php/clothing-rating.php");
-											$buyAgain=0;
+											$buy=0;
 											$notBuyAgian =0;
 											for ($x=0; $x <count($review) ; $x++) { 
 
-										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
-												$buyAgain++;
-											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+												$buy++;
+											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
 											$notBuyAgian++;
 											}
 											}
-										$notBuyAgian = $buyAgain + $notBuyAgian;
-											echo '<span><strong>'.$buyAgain.' out of '.$notBuyAgian. ' customers would buy this product again<strong></span>';
+										$notBuyAgian = $buy + $notBuyAgian;
+											echo '<span><strong>'.$buy.' out of '.$notBuyAgian. ' customers would buy this product again<strong></span>';
 												?>
 										</div>
 										<!-- <div class="tab-pane" id="pill-2">
@@ -541,26 +541,47 @@ $size = array("M", "L", "XL");
 									<div class="clearfix mb-20">
 										<?php
 											$val = $_GET["item"];
-								
-	
-											
-											include("php/clothing-rating.php");
-											$totalRating =0;
-											$averageRating=0;
-											for ($x=0; $x <count($review) ; $x++) { 
-												# code...
-											
-											if ($review[$x]["productname"] == $val) {
-												# code...
-											
-											for ($i=0; $i <count($review) ; $i++) { 
-												$totalRating += $review[$i]["rating"];
-											}
+								// gets server information
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
 
-											$averageRating = $totalRating/ count($review);
+$sum =0;
+$count=0;
 
-											$averageRating=  round($averageRating);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+	$sql = "SELECT rating as value_sum FROM `productreview` WHERE clothingName = '$val' ";
+	$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      
+    
+$value = $row['value_sum'];
 
+    $sum += $value;
+    $count++;
+
+
+    }
+    // if no rows 
+} else {
+    echo '<ul style="display: inline-block;"><li><a href="#f1">rate this product</a></li></ul>';
+}
+
+$conn->close();
+
+					
+											if ($sum >0) {
+											
+											$averageRating = round($sum / $count); 
+										
 												echo '<span>';
 
 												for ($x=0; $x <$averageRating ; $x++) { 
@@ -574,8 +595,9 @@ $size = array("M", "L", "XL");
 												}
 											}
 										echo '</span>';
-									}
-								}
+									
+									# code...
+											}
 										?>
 									
 										<a href="#" class="wishlist"><i class="fa fa-heart-o pl-10 pr-5"></i>Wishlist</a>
@@ -777,7 +799,7 @@ $size = array("M", "L", "XL");
 										
 
 									<!-- comments form start -->
-									<div class="comments-form">
+									<div class="comments-form" id="f1" >
 										<h2 class="title">Add your Review</h2>
 										<form role="form" id="comment-form" action="php/add-review.php" method="post">
 											<div class="form-group has-feedback">
@@ -807,10 +829,10 @@ $size = array("M", "L", "XL");
 											</div>
 											<div class="form-group">
 												<legend>Would you buy again</legend>
-												<label >Yes</label>
-												<input type="radio" name="buyAgain" id="radio1" value="true">
-												<label>No</label>
-												<input type="radio" name="buyAgain" id="radio2" value="false">
+												<label for="radioz">Yes</label>
+												<input type="radio" name="buyAgain" id="radioz" value="true">
+												<label for="radiox">No</label>
+												<input type="radio" name="buyAgain" id="radiox" value="false">
 
 											</div>	
 											<?php

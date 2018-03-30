@@ -857,6 +857,7 @@ $conn->close();
 							</div>
 							<!-- pills end -->
 							<!-- pagination start -->
+							<div>
 							<nav class="text-center">
 								<ul class="pagination">
 									<li><a href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a></li>
@@ -868,6 +869,7 @@ $conn->close();
 									<li><a href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a></li>
 								</ul>
 							</nav>
+						</div>
 							<!-- pagination end -->
 						</div>
 						<!-- main end -->
