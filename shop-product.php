@@ -301,7 +301,7 @@ $size = array("M", "L", "XL");
 									
 									<!-- logo -->
 									<div id="logo" class="logo">
-										<a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS" style="margin-bottom: 1em;"></a>
+										<a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS" style="border-radius: 50%; height: 7em; margin-bottom: 1em;"></a>
 									</div>
 
 									<!-- name-and-slogan -->
