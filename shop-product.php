@@ -362,7 +362,7 @@ $size = array("M", "L", "XL");
 														
 													
 													<li class="active">
-														<a href="shop.php"  >Back To Home</a>
+														<a href="shop.php"  >Back To Shop</a>
 													
 
 													</li>
@@ -454,8 +454,8 @@ $size = array("M", "L", "XL");
 			<div class="breadcrumb-container">
 				<div class="container">
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home pr-10"></i><a href="shop.php">Home</a></li>
-						<li class="active">Product Title</li>
+						<li><i class="fa fa-home pr-10"></i><a href="index-landing.php">Home</a></li>
+						<li class="active">Product</li>
 					</ol>
 				</div>
 			</div>

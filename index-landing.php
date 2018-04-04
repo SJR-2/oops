@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>The Project | Home</title>
+    <title>OOPS | Home</title>
     <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
     <meta name="author" content="htmlcoder.me">
 
@@ -316,7 +316,7 @@
                               </li>
                             </ul>
                           </div> -->
-                  <!--         <div class="btn-group dropdown">
+                          <div class="btn-group dropdown">
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg">8</span></button>
                             <ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
                               <li>
@@ -356,7 +356,7 @@
                                 </div>
                               </li>
                             </ul>
-                          </div> -->
+                          </div>
                         </div>
                         <!-- header dropdown buttons end-->
                         
@@ -394,6 +394,25 @@
           </div>
            
         </div>
+        <?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $email = $_REQUEST['email'];
+    $pic = $_REQUEST['pic'];
+$to = "smj.johnsonjr@gmail.com";
+$headers =  'MIME-Version: 1.0' . "\r\n"; 
+$headers .= 'From: Your name <'.$email.'>' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+if (mail($to, 'Oops Moment', 'dd','from '.$email.'')) {
+echo("<p>Email successfully sent!</p>");
+} else {
+echo("<p>Email delivery failed…</p>");
+}
+}
+
+
+         ?>
         <!-- section end -->
         <!-- section start -->
         <!-- ================ -->
@@ -402,15 +421,15 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="call-to-action text-center">
-                  <form class="form-inline margin-clear d-flex justify-content-center" action="index-landing.html" method="post">
+                  <form class="form-inline margin-clear d-flex justify-content-center" action="index-landing.php" method="post">
                     <div class="form-group has-feedback">
                       <label class="sr-only" for="subscribe3">Email address</label>
-                      <input type="email" class="form-control form-control-lg" id="subscribe3" placeholder="Enter email" name="subscribe3" required="">
+                      <input type="email" class="form-control form-control-lg" id="subscribe3" placeholder="Enter email" name="email" required="">
                       <i class="fa fa-envelope form-control-feedback"></i>
                     </div>
                     <div class="form-group" style="margin-left: 3em;">
                   <label for="exampleInputFile">Input Image</label>
-                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                  <input type="file" class="form-control-file" name="pic" id="exampleInputFile" aria-describedby="fileHelp">
                 
                 </div>
                     <button type="submit" class="btn btn-lg btn-gray-transparent btn-animated ml-2">Submit <i class="fa fa-send"></i></button>

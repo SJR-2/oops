@@ -15,7 +15,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>OOPS | Home</title>
+		<title>OOPS | Shop</title>
 		<meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
 		<meta name="author" content="htmlcoder.me">
 
@@ -294,7 +294,12 @@
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<!-- main-menu -->
-											
+												<ul class="nav navbar-nav ">	
+													<li class="active">
+														<a href="index-landing.php"  >Back To Home</a>
+													
+
+													</li></ul>
 												<!-- main-menu end -->
 												
 												<!-- header dropdown buttons -->
@@ -359,10 +364,13 @@
 											</div>
 
 										</div>
+
 									</nav>
+
 									<!-- navbar end -->
 
 								</div>
+
 								<!-- main-navigation end -->
 								</div>
 								<!-- header-second end -->
@@ -384,8 +392,8 @@
 				<div class="breadcrumb-container">
 					<div class="container">
 						<ol class="breadcrumb">
-							<li><i class="fa fa-home pr-10"></i><a class="link-dark" href="shop.php">Home</a></li>
-							<li class="active">Inventory</li>
+							<li><i class="fa fa-home pr-10"></i><a class="link-dark" href="index-landing.php">Home</a></li>
+							<li class="active">Shop</li>
 						</ol>
 					</div>
 				</div>
