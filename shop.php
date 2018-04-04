@@ -378,7 +378,7 @@
 		
 			<!-- banner start -->
 			<!-- ================ -->
-			<div class="banner dark-translucent-bg padding-bottom-clear" style="background-image:url('images/la.jpeg');background-position: 50% 32%; height: 33em;">
+			<div class="banner dark-translucent-bg padding-bottom-clear" style="background-image:url('images/la.jpeg');background-position: 50% 32%; height: 28em;">
 				<!-- breadcrumb start -->
 				<!-- ================ -->
 				<div class="breadcrumb-container">
