@@ -416,6 +416,9 @@ echo("<p>Email delivery failed…</p>");
         <!-- section end -->
         <!-- section start -->
         <!-- ================ -->
+         <!-- section end -->
+        <!-- section start -->
+        <!-- ================ -->
         <div class="pv-40 dark-translucent-bg">
           <div class="container">
             <div class="row">
@@ -423,22 +426,15 @@ echo("<p>Email delivery failed…</p>");
                 <div class="call-to-action text-center">
                   <form class="form-inline margin-clear d-flex justify-content-center" action="index-landing.php" method="post">
                     <div class="form-group has-feedback">
-                      <label class="sr-only" for="subscribe3">Email address</label>
-                      <input type="email" class="form-control form-control-lg" id="subscribe3" placeholder="Enter email" name="email" required="">
-                      <i class="fa fa-envelope form-control-feedback"></i>
-                    </div>
-                    <div class="form-group" style="margin-left: 3em;">
-                  <label for="exampleInputFile">Input Image</label>
-                  <input type="file" class="form-control-file" name="pic" id="exampleInputFile" aria-describedby="fileHelp">
-                
-                </div>
-                    <button type="submit" class="btn btn-lg btn-gray-transparent btn-animated ml-2">Submit <i class="fa fa-send"></i></button>
+                       <a href="mailto:info@theproject.com" class="btn btn-lg btn-gray-transparent btn-animated ml-2">Send us your #Oops moment<i class="fa fa-send"></i></a></div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- section end -->
+      </div>
         <!-- section end -->
       </div>
       <!-- banner end -->

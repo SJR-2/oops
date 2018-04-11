@@ -524,12 +524,12 @@
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href=""#"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -549,7 +549,7 @@
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -588,7 +588,7 @@ $items = array();
 
 
 
-// selecting only name and price to display on shop page
+// 
 $sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
 $result = $conn->query($sql);
 
@@ -618,6 +618,7 @@ $conn->close();
 
 											echo '<div class="overlay-container">';
 											if ($items[$i]['stock'] ==0) {
+												$outOfStock = true;
 													echo  '<span class="badge">SOLD OUT</span>';
 											}else{
 											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
@@ -626,7 +627,28 @@ $conn->close();
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
-												echo '<div class="overlay-to-top links">
+												if($outOfStock){
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+
+											echo '<div class="body">
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
 															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
@@ -640,15 +662,16 @@ $conn->close();
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
 										</div>';
+													}
+										
 									}
 
-										}				
-
+										}
 										
 										?>
 
@@ -680,7 +703,7 @@ $items = array();
 
 
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
+$sql = "SELECT Distinct name,price,type, stock, rating FROM shopapparel, productreview WHERE shopapparel.name = productreview.clothingName AND rating >=4";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -688,7 +711,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "rating"=> $row["rating"]);
 
 
 
@@ -709,15 +732,39 @@ $conn->close();
 
 											echo '<div class="overlay-container">';
 											if ($items[$i]['stock'] ==0) {
-													echo  '<span class="badge">SOLD OUT</span>';
+												$outOfStock = true;
+													echo  '<span class="badge">SOLD OUT</span>
+													<span class="price">'.$items[$i]["rating"].' star rating</span>';
 											}else{
-											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>
+											<span class="price">'.$items[$i]["rating"].' star rating</span>';
 											}
 										
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
-												echo '<div class="overlay-to-top links">
+											if($outOfStock){
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+
+											echo '<div class="body">
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
 															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
@@ -731,15 +778,16 @@ $conn->close();
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+
+														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
 										</div>';
+													}
+										
 									}
-
-										}				
-
+								}
 										
 										?>
 
