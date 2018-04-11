@@ -17,6 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
 // array to hold items for each row from data base
 $items = array();
 // selecting only name and price to display on shop page

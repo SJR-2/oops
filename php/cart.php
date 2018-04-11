@@ -19,14 +19,14 @@ $items = array();
 
 
 
-$sql = "SELECT name, price, color, size FROM clothing";
+$sql = "SELECT name, price FROM shopapparel";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         //echo  $row["name"] . " ". $row["price"]." " . $row["color"]. " ". $row["size"] ."<br>";
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"], "size" => $row["size"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"]);
 
         
 
