@@ -23,6 +23,7 @@ $message= $_POST['message4'];
 $buyagain= $_POST['buyAgain'];
 $productname= $_POST['clothingname'];
 
+
 echo $name.'<br>';
 echo $subject.'<br>';
 echo $rating.'<br>';
@@ -40,9 +41,14 @@ $stmt->execute();
 
 echo "New records created successfully";
 
+
+ 
+
 $stmt->close();
 $conn->close();
 
+
+ // header('location:../shop-product.php?item='.$productname.'');
 
 
 // if ($conn->query($sql) === TRUE) {

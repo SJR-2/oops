@@ -527,13 +527,15 @@ $size = array("M", "L", "XL");
 											$notBuyAgian =0;
 											for ($x=0; $x <count($review) ; $x++) { 
 
-										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
 												$buy++;
-											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
+											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
 											$notBuyAgian++;
 											}
+
 											}
 										$notBuyAgian = $buy + $notBuyAgian;
+
 											echo '<span><strong>'.$buy.' out of '.$notBuyAgian. ' customers would buy this product again<strong></span>';
 												?>
 										</div>
@@ -804,6 +806,8 @@ $conn->close();
 									<div class="comments-form" id="f1" >
 										<h2 class="title">Add your Review</h2>
 										<form role="form" id="comment-form" action="php/add-review.php" method="post">
+											
+											
 											<div class="form-group has-feedback">
 												<label for="name4">Name</label>
 												<input type="text" class="form-control" id="name4" placeholder="" name="name4" required>
@@ -832,9 +836,9 @@ $conn->close();
 											<div class="form-group">
 												<legend>Would you buy again</legend>
 												<label for="radioz">Yes</label>
-												<input type="radio" name="buyAgain" id="radioz" value="true">
+												<input type="radio" name="buyAgain" id="radioz" value=0>
 												<label for="radiox">No</label>
-												<input type="radio" name="buyAgain" id="radiox" value="false">
+												<input type="radio" name="buyAgain" id="radiox" value=1>
 
 											</div>	
 											<?php
