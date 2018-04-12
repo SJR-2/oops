@@ -20,21 +20,36 @@ if ($conn->connect_error) {
 
 // array to hold items for each row from data base
 $items = array();
-// selecting only name and price to display on shop page
-$sql = "SELECT Distinct name, price, color, type FROM shopapparel where name = '$val' ";
-$result = $conn->query($sql);
 
-// loops through rows until there is 0 rows
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"], "type" => $row["type"]);
-    }
-    // if no rows 
-} else {
-   // echo "0 results";
+if ($stmt = $conn->prepare("SELECT Distinct name, price, color, type FROM shopapparel where name = ? ")) {
+	
+
+$stmt->bind_param("s",$val);
+
+$stmt->execute();
+
+$meta = $stmt->result_metadata();
+
+$stmt->bind_result($name,$price,$color,$type);
+
+
+$stmt->fetch();
 }
+// selecting only name and price to display on shop page
+// $sql = "SELECT Distinct name, price, color, type FROM shopapparel where name = '$val' ";
+// $result = $conn->query($sql);
+
+// // loops through rows until there is 0 rows
+// if ($result->num_rows > 0) {
+//     // output data of each row
+//     while($row = $result->fetch_assoc()) {
+      
+//     	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"], "type" => $row["type"]);
+//     }
+//     // if no rows 
+// } else {
+//    // echo "0 results";
+// }
 
 
 $conn->close();
@@ -522,22 +537,15 @@ $size = array("M", "L", "XL");
 											echo '<span><strong>'.$buy.' out of '.$notBuyAgian. ' customers would buy this product again<strong></span>';
 												?>
 										</div>
-										<!-- <div class="tab-pane" id="pill-2">
-											<div class="embed-responsive embed-responsive-16by9">
-												<iframe class="embed-responsive-item" src="//player.vimeo.com/video/29198414?byline=0&amp;portrait=0"></iframe>
-												<p><a href="http://vimeo.com/29198414">Introducing Vimeo Music Store</a> from <a href="http://vimeo.com/staff">Vimeo Staff</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-											</div>
-										</div> -->
+									
 									</div>
 									<!-- pills end -->
 								</div>
 					
 								<div class="col-md-8 pv-30">
-									<?php echo "<h1>" . $items[0]['name'] . "</h1>"  ?>
-									<?php echo "<p>" . $items[0]['type']. "</p>"; ?>
-							<!-- 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem debitis enim facilis porro quia in voluptates praesentium, cupiditate, dolorum. Facilis minus, quidem! Id perspiciatis labore praesentium voluptatibus assumenda odio, magni.</p>
-									<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit</h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non sint beatae delectus obcaecati eveniet nulla voluptate odio est laborum veniam? Natus nemo provident, voluptate molestias sint, nam dolor blanditiis minus!</p> -->
+									<?php echo "<h1>" . $name . "</h1>"  ?>
+									<?php echo "<p>" . $type. "</p>"; ?>
+						
 									<hr class="mb-10">
 									<div class="clearfix mb-20">
 										<?php
@@ -630,8 +638,8 @@ $conn->close();
 
 													"<select class='form-control' name='color' id='color'>";
 														
-														for($i=0; $i<count($items);$i++){
-															echo "<option selected>" .$items[$i]["color"]. "</option>";
+														for($i=0; $i<count($color);$i++){
+															echo "<option selected>" .$color. "</option>";
 
 														} 
 
@@ -664,13 +672,6 @@ $conn->close();
 													<select class="form-control" name="size" id="size">
 													<?php 
 
-													for ($i=0; $i <count($size) ; $i++) { 
-														if ($v ==color[$i]) {
-														
-														echo "<option>". $size[$i]. "</option>";
-
-													}
-													}
 
 													?>
 													</select>
@@ -684,8 +685,8 @@ $conn->close();
 
 									<div class="light-gray-bg p-20 bordered clearfix">
 										<!-- show price and get price for cart -->
-									<?php echo "<span class='product price'><i class='icon-tag pr-10'></i>$".$items[0]["price"].".00</span>"  ?>	
-							        <?php echo "<input type='hidden' name='price' value=".$items[0]["price"].">"	?>
+									<?php echo "<span class='product price'><i class='icon-tag pr-10'></i>$".$price.".00</span>"  ?>	
+							        <?php echo "<input type='hidden' name='price' value=".$price.">"	?>
 
 									<div class="product elements-list pull-right clearfix">
 											<input type="submit" value="Add to Cart" class="margin-clear btn btn-default">

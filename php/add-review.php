@@ -31,18 +31,29 @@ echo $buyagain.'<br>';
 echo $productname;
 
 
-$sql = "INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`) VALUES ('$name','$subject','$rating','$message',$buyagain,'$productname')";
+// $sql = "INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`) VALUES ('$name','$subject','$rating','$message',$buyagain,'$productname')";
 
+// prepare and bind
+$stmt = $conn->prepare("INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`)  VALUES (?, ?, ?,?,?,?)");
+$stmt->bind_param("ssisis", $name, $subject, $rating,$message,$buyagain,$productname);
+$stmt->execute();
 
-if ($conn->query($sql) === TRUE) {
+echo "New records created successfully";
 
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-
+$stmt->close();
 $conn->close();
+
+
+
+// if ($conn->query($sql) === TRUE) {
+
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+// }
+
+
+// $conn->close();
 
 
 ?>
