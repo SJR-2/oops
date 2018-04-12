@@ -48,7 +48,8 @@ $stmt->close();
 $conn->close();
 
 
- // header('location:../shop-product.php?item='.$productname.'');
+///cross site scripting
+ header('location:../shop-product.php?item='.$productname.'');
 
 
 // if ($conn->query($sql) === TRUE) {

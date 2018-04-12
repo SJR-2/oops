@@ -20,7 +20,7 @@ $items = array();
 
 
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel";
+$sql = "SELECT Distinct name,price,type, stock, ID FROM shopapparel";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
 
 
 

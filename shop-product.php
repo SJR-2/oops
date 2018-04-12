@@ -21,10 +21,10 @@ if ($conn->connect_error) {
 // array to hold items for each row from data base
 $items = array();
 
-if ($stmt = $conn->prepare("SELECT Distinct name, price, color, type FROM shopapparel where name = ? ")) {
+if ($stmt = $conn->prepare("SELECT Distinct name, price, color, type FROM shopapparel where ID = ? ")) {
 	
 
-$stmt->bind_param("s",$val);
+$stmt->bind_param("i",$val);
 
 $stmt->execute();
 
@@ -34,6 +34,7 @@ $stmt->bind_result($name,$price,$color,$type);
 
 
 $stmt->fetch();
+$stmt->close();
 }
 // selecting only name and price to display on shop page
 // $sql = "SELECT Distinct name, price, color, type FROM shopapparel where name = '$val' ";
@@ -161,7 +162,7 @@ $size = array("M", "L", "XL");
 										<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
 										<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
 										<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>
-										<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+										<li class="facebook"><a target="_blank" href="https://www.facebook.com/oops616/"><i class="fa fa-facebook"></i></a></li>
 										<li class="pinterest"><a target="_blank" href="http://www.pinterest.com"><i class="fa fa-pinterest"></i></a></li>
 									</ul>
 									<div class="social-links hidden-lg hidden-md hidden-sm circle small">
@@ -174,7 +175,7 @@ $size = array("M", "L", "XL");
 												<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
 												<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube-play"></i></a></li>
 												<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>
-												<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+												<li class="facebook"><a target="_blank" href="https://www.facebook.com/oops616/"><i class="fa fa-facebook"></i></a></li>
 												<li class="pinterest"><a target="_blank" href="http://www.pinterest.com"><i class="fa fa-pinterest"></i></a></li>
 											</ul>
 										</div>
@@ -527,9 +528,9 @@ $size = array("M", "L", "XL");
 											$notBuyAgian =0;
 											for ($x=0; $x <count($review) ; $x++) { 
 
-										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
+										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
 												$buy++;
-											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
 											$notBuyAgian++;
 											}
 
@@ -836,9 +837,9 @@ $conn->close();
 											<div class="form-group">
 												<legend>Would you buy again</legend>
 												<label for="radioz">Yes</label>
-												<input type="radio" name="buyAgain" id="radioz" value=0>
+												<input type="radio" name="buyAgain" id="radioz" value="1">
 												<label for="radiox">No</label>
-												<input type="radio" name="buyAgain" id="radiox" value=1>
+												<input type="radio" name="buyAgain" id="radiox" value="0">
 
 											</div>	
 											<?php

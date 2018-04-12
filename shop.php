@@ -485,18 +485,18 @@
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -536,7 +536,7 @@ $items = array();
 
 
 // 
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
+$sql = "SELECT Distinct name,price,type, stock, ID FROM shopapparel order by price asc";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -544,7 +544,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
 
 
 
@@ -598,18 +598,18 @@ $conn->close();
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -650,7 +650,7 @@ $items = array();
 
 
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock, rating FROM shopapparel, productreview WHERE shopapparel.name = productreview.clothingName AND rating >=4";
+$sql = "SELECT Distinct name,price,type, stock, rating, ID FROM shopapparel, productreview WHERE shopapparel.name = productreview.clothingName AND rating >=4";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -658,7 +658,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "rating"=> $row["rating"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "rating"=> $row["rating"], "pid"=> $row["ID"]);
 
 
 
@@ -714,19 +714,19 @@ $conn->close();
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
 
-														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -772,7 +772,7 @@ $items = array();
 
 
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel WHERE type = 'T-Shirt'";
+$sql = "SELECT Distinct name,price,type, stock,ID FROM shopapparel WHERE type = 'T-Shirt'";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -780,7 +780,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"],"pid"=> $row["ID"]);
 
 
 
@@ -835,19 +835,19 @@ $conn->close();
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
 
-														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -892,7 +892,7 @@ $items = array();
 
 
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel WHERE type = 'Long-Sleeve'";
+$sql = "SELECT Distinct name,price,type, stock, ID FROM shopapparel WHERE type = 'Long-Sleeve'";
 $result = $conn->query($sql);
 
 // loops through rows until there is 0 rows
@@ -900,7 +900,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
 
 
 
@@ -955,19 +955,19 @@ $conn->close();
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
 
-														<a href="shop-product.php?item='.$items[$i]['name'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
