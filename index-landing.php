@@ -136,7 +136,7 @@
                   <!-- ================ -->
                   <div class="header-top-dropdown text-right">
                     <div class="btn-group">
-                      <a href="page-signup.html" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
+                      <a href="registration.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
                     </div>
                     <div class="btn-group dropdown">
                       <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
