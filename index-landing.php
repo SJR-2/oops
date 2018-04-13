@@ -119,7 +119,7 @@
                   <ul class="list-inline hidden-sm hidden-xs">
                     <li><i class="fa fa-map-marker pr-5 pl-10"></i>One infinity loop, 54100</li>
                     <li><i class="fa fa-phone pr-5 pl-10"></i>+00 1234567890</li>
-                    <li><i class="fa fa-envelope-o pr-5 pl-10"></i> oops.clothing@gmail.com</li>
+                    <li><i class="fa fa-envelope-o pr-5 pl-10"></i> shop@oops616.com</li>
                   </ul>
 
                 </div>
@@ -139,35 +139,8 @@
                       <a href="registration.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
                     </div>
                     <div class="btn-group dropdown">
-                      <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
-                      <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-                        <li>
-                          <form class="login-form margin-clear">
-                            <div class="form-group has-feedback">
-                              <label class="control-label">Username</label>
-                              <input type="text" class="form-control" placeholder="">
-                              <i class="fa fa-user form-control-feedback"></i>
-                            </div>
-                            <div class="form-group has-feedback">
-                              <label class="control-label">Password</label>
-                              <input type="password" class="form-control" placeholder="">
-                              <i class="fa fa-lock form-control-feedback"></i>
-                            </div>
-                            <button type="submit" class="btn btn-gray btn-sm">Log In</button>
-                            <span class="pl-5 pr-5">or</span>
-                            <button type="submit" class="btn btn-default btn-sm">Sing Up</button>
-                            <ul>
-                              <li><a href="#">Forgot your password?</a></li>
-                            </ul>
-                            <span class="text-center">Login with</span>
-                            <ul class="social-links circle small colored clearfix">
-                              <li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-                              <li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-                              <li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                          </form>
-                        </li>
-                      </ul>
+                      <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i><a href="Login.php">Login</a></button>
+                      
                     </div>
                   </div>
                   <!--  header top dropdowns end -->
@@ -396,20 +369,6 @@
         </div>
         <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // collect value of input field
-    $email = $_REQUEST['email'];
-    $pic = $_REQUEST['pic'];
-$to = "smj.johnsonjr@gmail.com";
-$headers =  'MIME-Version: 1.0' . "\r\n"; 
-$headers .= 'From: Your name <'.$email.'>' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-if (mail($to, 'Oops Moment', 'dd','from '.$email.'')) {
-echo("<p>Email successfully sent!</p>");
-} else {
-echo("<p>Email delivery failed…</p>");
-}
-}
 
 
          ?>
@@ -426,7 +385,7 @@ echo("<p>Email delivery failed…</p>");
                 <div class="call-to-action text-center">
                   <form class="form-inline margin-clear d-flex justify-content-center" action="index-landing.php" method="post">
                     <div class="form-group has-feedback">
-                       <a href="mailto:info@theproject.com" class="btn btn-lg btn-gray-transparent btn-animated ml-2">Send us your #Oops moment<i class="fa fa-send"></i></a></div>
+                       <a href="mailto:shop@oops616.com" class="btn btn-lg btn-gray-transparent btn-animated ml-2">Send us your #Oops moment<i class="fa fa-send"></i></a></div>
                   </form>
                 </div>
               </div>
@@ -444,7 +403,7 @@ echo("<p>Email delivery failed…</p>");
 
 
     
-      <!-- footer top end -->
+      
       <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
       <!-- ================ -->
       <footer id="footer" class="clearfix ">
@@ -490,7 +449,7 @@ echo("<p>Email delivery failed…</p>");
             <div class="subfooter-inner">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="text-center">Copyright © 2017 OOPS. All Rights Reserved</p>
+                  <p class="text-center">2018 Oops616. All Rights Reserved</p>
                 </div>
               </div>
             </div>
