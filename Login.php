@@ -377,7 +377,7 @@
                   </form>
                 </div>
                 <p class="text-center space-top">Don't have an account yet? <a href="registration.php 
-                 ?>">Sing up</a> now.</p>
+                 ">Sing up</a> now.</p>
               </div>
               <!-- main end -->
             </div>
