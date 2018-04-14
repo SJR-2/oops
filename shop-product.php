@@ -183,7 +183,7 @@ $size = array("M", "L", "XL");
 									<ul class="list-inline hidden-sm hidden-xs">
 										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One Infinity Loop Av, Tk 123456</li>
 										<li><i class="fa fa-phone pr-5 pl-10"></i>+12 123 123 123</li>
-										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> theproject@mail.com</li>
+										<li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
@@ -932,7 +932,7 @@ $conn->close();
 										<ul class="list-icons">
 											<li><i class="fa fa-map-marker pr-10 text-default"></i> One infinity loop, 54100</li>
 											<li><i class="fa fa-phone pr-10 text-default"></i> +00 1234567890</li>
-											<li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>info@theproject.com</a></li>
+											<li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
 										</ul>
 									</div>
 								</div>
@@ -949,7 +949,7 @@ $conn->close();
 						<div class="subfooter-inner">
 							<div class="row">
 								<div class="col-md-12">
-									<p class="text-center">Copyright © 2017 OOPS. All Rights Reserved</p>
+									<p class="text-center">2018 Oops616. All Rights Reserved</p>
 								</div>
 							</div>
 						</div>

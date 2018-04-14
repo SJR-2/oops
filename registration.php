@@ -458,7 +458,7 @@
                     <ul class="list-icons">
                       <li><i class="fa fa-map-marker pr-10 text-default"></i> One infinity loop, 54100</li>
                       <li><i class="fa fa-phone pr-10 text-default"></i> +00 1234567890</li>
-                      <li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>info@theproject.com</a></li>
+                      <li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
                     </ul>
                   </div>
                 </div>

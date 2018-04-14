@@ -119,7 +119,7 @@
                   <ul class="list-inline hidden-sm hidden-xs">
                     <li><i class="fa fa-map-marker pr-5 pl-10"></i>One infinity loop, 54100</li>
                     <li><i class="fa fa-phone pr-5 pl-10"></i>+00 1234567890</li>
-                    <li><i class="fa fa-envelope-o pr-5 pl-10"></i> shop@oops616.com</li>
+                    <li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
                   </ul>
 
                 </div>
@@ -138,8 +138,8 @@
                     <div class="btn-group">
                       <a href="registration.php" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
                     </div>
-                    <div class="btn-group dropdown">
-                      <button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i><a href="Login.php">Login</a></button>
+                    <div class="btn-group">
+                      <a href="Login.php" class="btn btn-default btn-sm"><i class="fa fa-lock pr-10"></i>Login</a>
                       
                     </div>
                   </div>
@@ -367,11 +367,7 @@
           </div>
            
         </div>
-        <?php
-
-
-
-         ?>
+     
         <!-- section end -->
         <!-- section start -->
         <!-- ================ -->
@@ -432,7 +428,7 @@
                     <ul class="list-icons">
                       <li><i class="fa fa-map-marker pr-10 text-default"></i> One infinity loop, 54100</li>
                       <li><i class="fa fa-phone pr-10 text-default"></i> +00 1234567890</li>
-                      <li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>info@theproject.com</a></li>
+                      <li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
                     </ul>
                   </div>
                 </div>
