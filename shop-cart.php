@@ -86,7 +86,7 @@
 							<div class="col-xs-3 col-sm-6 col-md-9">
 								<!-- header-top-first start -->
 								<!-- ================ -->
-								<div class="header-top-first clearfix">
+								<div class="header-top-first clearfix" >
 									<ul class="social-links circle small clearfix hidden-xs">
 										<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
 										<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
@@ -113,61 +113,14 @@
 										</div>
 									</div>
 									<ul class="list-inline hidden-sm hidden-xs">
-										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One Infinity Loop Av, Tk 123456</li>
-										<li><i class="fa fa-phone pr-5 pl-10"></i>+12 123 123 123</li>
-										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> theproject@mail.com</li>
+										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One infinity loop, 54100</li>
+										<li><i class="fa fa-phone pr-5 pl-10"></i>+00 1234567890</li>
+										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> oops.clothing@gmail.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
 							</div>
-							<div class="col-xs-9 col-sm-6 col-md-3">
-
-								<!-- header-top-second start -->
-								<!-- ================ -->
-								<div id="header-top-second"  class="clearfix">
-
-									<!-- header top dropdowns start -->
-									<!-- ================ -->
-									<!-- <div class="header-top-dropdown text-right"> -->
-										<!-- <div class="btn-group">
-											<a href="page-signup.html" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
-										</div> -->
-										<!-- <div class="btn-group dropdown">
-											<button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
-											<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-												<li>
-													<form class="login-form margin-clear">
-														<div class="form-group has-feedback">
-															<label class="control-label">Username</label>
-															<input type="text" class="form-control" placeholder="">
-															<i class="fa fa-user form-control-feedback"></i>
-														</div>
-														<div class="form-group has-feedback">
-															<label class="control-label">Password</label>
-															<input type="password" class="form-control" placeholder="">
-															<i class="fa fa-lock form-control-feedback"></i>
-														</div>
-														<button type="submit" class="btn btn-gray btn-sm">Log In</button>
-														<span class="pl-5 pr-5">or</span>
-														<button type="submit" class="btn btn-default btn-sm">Sing Up</button>
-														<ul>
-															<li><a href="#">Forgot your password?</a></li>
-														</ul>
-														<span class="text-center">Login with</span>
-														<ul class="social-links circle small colored clearfix">
-															<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-															<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-															<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-														</ul>
-													</form>
-												</li>
-											</ul>
-										</div> -->
-									<!-- </div> -->
-									<!--  header top dropdowns end -->
-								</div>
-								<!-- header-top-second end -->
-							</div>
+					
 						</div>
 					</div>
 				</div>
@@ -180,7 +133,7 @@
 				<!-- "full-width": mandatory class for the full-width menu layout -->
 				<!-- "centered": mandatory class for the centered logo layout -->
 				<!-- ================ --> 
-				<header class="header  fixed    clearfix">
+				<header class="header  fixed    clearfix" >
 					
 					<div class="container">
 						<div class="row">
@@ -191,7 +144,7 @@
 									
 									<!-- header dropdown buttons -->
 									<div class="header-dropdown-buttons visible-xs">
-									<!-- 	<div class="btn-group dropdown">
+										<!-- <div class="btn-group dropdown">
 											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></button>
 											<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 												<li>
@@ -249,13 +202,12 @@
 									<!-- header dropdown buttons end-->
 									
 									<!-- logo -->
-									<div id="logo" class="logo">
-										<a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS" style="margin-bottom: 1em;"></a>
+									<div id="logo" class="logo" style="margin-bottom: 1em;">
+										<a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS!" style="border-radius: 50%; height: 7em; "></a>
 									</div>
-
 									<!-- name-and-slogan -->
-									<!-- <div class="site-slogan">
-										ITS A LIFE STYLE
+									<!-- <div class="site-slogan" style="">
+										Its A Life Style
 									</div> -->
 
 								</div>
@@ -295,33 +247,17 @@
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<!-- main-menu -->
-												<ul class="nav navbar-nav ">
-
-													<!-- mega-menu start -->
-													<!-- mega-menu end -->
-													<!-- mega-menu start -->
-													
-													<!-- mega-menu end -->
-													
-													<!-- mega-menu start -->
-													
-													<!-- mega-menu end -->
-												
-													
-														
-													
+												<ul class="nav navbar-nav ">	
 													<li class="active">
-														<a href="shop.php"  >Back To Home</a>
+														<a href="shop.php"  >Back To Shop</a>
 													
 
-													</li>
-													
-												</ul>
+													</li></ul>
 												<!-- main-menu end -->
 												
 												<!-- header dropdown buttons -->
 												<div class="header-dropdown-buttons hidden-xs ">
-													<!-- <div class="btn-group dropdown">
+												<!-- 	<div class="btn-group dropdown">
 														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></button>
 														<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 															<li>
@@ -381,10 +317,13 @@
 											</div>
 
 										</div>
+
 									</nav>
+
 									<!-- navbar end -->
 
 								</div>
+
 								<!-- main-navigation end -->
 								</div>
 								<!-- header-second end -->

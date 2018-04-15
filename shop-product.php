@@ -620,7 +620,7 @@ $conn->close();
 										</ul>
 									</div>
 									<div class="row grid-space-10">
-										<form   role="form" class="clearfix" action="php/cart.php" method="get">
+										<form   role="form" class="clearfix" action="shop-cart.php" method="get">
 											     <input type='hidden' name='productName' value='<?php $items[0]['name']?>'>
 											<div class="col-md-4">
 												<div class="form-group">
