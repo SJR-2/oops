@@ -184,7 +184,7 @@
                   
                   <!-- logo -->
                   <div id="logo" class="logo" style="margin-bottom: 1em;">
-                    <a href="shokphp"><img id="logo_img" src="op.jpg" alt="OOPS!" style="border-radius: 50%; height: 7em; ">Shop now? click here</a>
+                    <a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS!" style="border-radius: 50%; height: 7em; ">Shop now? click here</a>
                   </div>
                  <!-- name-and-slogan -->
                 
@@ -312,7 +312,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index-landing.php">Home</a></li>
             <li class="breadcrumb-item active">Page Login</li>
           </ol>
         </div>

@@ -352,7 +352,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="registration.php">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index-landing.php">Home</a></li>
             <li class="breadcrumb-item active">Page Sign Up</li>
           </ol>
         </div>
