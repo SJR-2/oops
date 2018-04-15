@@ -2,7 +2,7 @@
 
 
 	 include("php/cart.php");
-echo $_SESSION['id'];
+
 $uid = $_SESSION['id'];
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -11,7 +11,8 @@ $productId = $_POST["item"];
 $quantity = $_POST["quantity"];
 $color = $_POST["color"];
 $size = $_POST["size"];
-$price = $_POST["price"];
+$subtotal = $_POST["price"];
+$productName= $_POST["productName"];
 $productType = $_POST["type"];
 	
 

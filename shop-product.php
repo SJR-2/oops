@@ -621,8 +621,12 @@ $conn->close();
 									</div>
 									<div class="row grid-space-10">
 										<form   role="form" class="clearfix" action="shop-cart.php" method="post">
+
+											   <input type='hidden' name='productName' value='<?php $name?>'>
+
 											     <input type='hidden' name='item' value='<?php $items[0]['id']?>'>
 											     <input type='hidden' name='type' value='<?php $type?>'>
+
 											<div class="col-md-4">
 												<div class="form-group">
 													<label for="quantity">Quantity</label>
