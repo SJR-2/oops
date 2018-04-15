@@ -1,23 +1,8 @@
-<?php 
-  session_start(); 
 
-  if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: Login.php');
-  }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['username']);
-  	header("location: Login.php");
-  }
-?>
 <?php 
 	include("php/clothing-name.php");
-
 	// include("php/cart.php");
-
  ?>
- 
 
 <!DOCTYPE html>
 <!-- https://getbootstrap.com/docs/3.3/css/#forms -->
@@ -82,12 +67,10 @@
     font-size: 16px;
     border: none;
 }
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -96,20 +79,16 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {}
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .dropdown:hover .dropbtn {
     
 }
@@ -122,25 +101,6 @@
 	<!-- "transparent-header": makes the header transparent and pulls the banner to top -->
 	<!-- "gradient-background-header": applies gradient background to header -->
 	<!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-	<div class="content">
-  	<!-- notification message -->
-  	<?php if (isset($_SESSION['success'])) : ?>
-      <div class="error success" >
-      	<h3>
-          <?php 
-          	echo $_SESSION['success']; 
-          	unset($_SESSION['success']);
-          ?>
-      	</h3>
-      </div>
-  	<?php endif ?>
-
-    <!-- logged in user information -->
-    <?php  if (isset($_SESSION['username'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-    	<p> <a href="shop.php?logout='1'" style="color: red;">logout</a> </p>
-    <?php endif ?>
-</div>
 	<body class="no-trans    ">
 
 		<!-- scrollToTop -->
@@ -195,7 +155,7 @@
 									<ul class="list-inline hidden-sm hidden-xs">
 										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One infinity loop, 54100</li>
 										<li><i class="fa fa-phone pr-5 pl-10"></i>+00 1234567890</li>
-										<li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
+										<li><i class="fa fa-envelope-o pr-5 pl-10"></i> oops.clothing@gmail.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
@@ -436,63 +396,12 @@
 						<div class="col-md-8 text-center col-md-offset-2 pv-20">
 							<h2 class="title object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100" style="padding-top: 6em;">OOPS Its a <strong>Life Style</strong></h2>
 							<div class="separator object-non-visible mt-10" data-animation-effect="fadeIn" data-effect-delay="100"></div>
-							<!-- <p class="text-center object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis, cupiditate laudantium velit nostrum, exercitationem accusamus, possimus soluta illo deserunt tempora qui.</p> -->
+						
 						</div>
 					</div>
 				</div>
-				<!-- section start -->
-				<!-- ================ -->
-				<!-- <div class="dark-translucent-bg section"> -->
-					<!-- <div class="container"> -->
-						<!-- filters start -->
-						<!-- <div class="sorting-filters text-center mb-20"> -->
-							<!-- <form class="form-inline"> -->
-							<!-- 	<div class="form-group">
-									<label>Sort by</label>
-									<select class="form-control">
-										<option selected="selected">Date</option>
-										<option>Price</option>
-										<option>Model</option>
-									</select>
-								</div> -->
-							<!-- 	<div class="form-group">
-									<label>Order</label>
-									<select class="form-control">
-										<option selected="selected">Acs</option>
-										<option>Desc</option>
-									</select> 
-								</div> -->
-							<!-- 	<div class="form-group">
-									<label>Price $ (min/max)</label>
-									<div class="row grid-space-10">
-										<div class="col-sm-6">
-											<input type="text" class="form-control">
-										</div>
-										<div class="col-sm-6">
-											<input type="text" class="form-control col-xs-6">
-										</div>
-									</div>
-								</div> -->
-							<!-- 	<div class="form-group">
-									<label>Category</label>
-									<select class="form-control">
-										<option selected="selected">Smartphones</option>
-										<option>Tablets</option>
-										<option>Smart Watches</option>
-										<option>Desktops</option>
-										<option>Software</option>
-										<option>Accessories</option>
-									</select> 
-								</div> -->
-								<!-- <div class="form-group">
-									<a href="#" class="btn btn-default">Submit</a>
-								</div> -->
-							<!-- </form> -->
-						<!-- </div> -->
-						<!-- filters end -->
-					<!-- </div> -->
-				<!-- </div> -->
-				<!-- section end -->				
+		
+									
 			</div>
 			<!-- banner end -->
 
@@ -513,16 +422,14 @@
 								<li class="active"><a href="#pill-1" role="tab" data-toggle="tab" title="Latest Arrivals"><i class="icon-star"></i> Latest Arrivals</a></li>
 								<li><a href="#pill-2" role="tab" data-toggle="tab" title="Lowest-Highest"><i class="icon-up-1"></i>Price</a></li>
 								<li><a href="#pill-3" role="tab" data-toggle="tab" title="Top Sellers"><i class=" icon-heart"></i> Top Sellers</a></li>
-<div class="dropdown" style="padding-top: 6px;">
-								<li class="dropbtn"><a href="#pill-4" role="tab" data-toggle="tab" title="Category"><i class=" icon-search"></i>Category</a>
-							</li>
 
-							<div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-						</div>
+
+
+					<li><a href="#" role="tab" data-toggle="tab" title="Category"><i class=" icon-search"></i>Category</a></li>
+
+   <li> <a href="#pill-5"  style="display: inline;"  role="tab" data-toggle="tab" title="T-Shirt">T-Shirt</a></li>
+  <li>  <a href="#pill-6"  role="tab" data-toggle="tab" title="Long-Sleeve" style="display: inline;">Long-Sleeve</a></li>
+
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content clear-style">
@@ -536,7 +443,6 @@
 									$outOfStock = false;
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
-
 											echo '<div class="overlay-container">';
 											if ($items[$i]['stock'] ==0) {
 													echo  '<span class="badge">SOLD OUT</span>';
@@ -555,14 +461,13 @@
 														</span>
 													</div>
 												</div>';
-
 											echo '<div class="body">
-										<h3><a href=""#"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -571,18 +476,17 @@
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
-
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
@@ -590,7 +494,6 @@
 													}
 										
 									}
-
 										}
 										?>
 
@@ -607,50 +510,38 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "shopapparel";
-
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 // array to hold items for each row from data base
 $items = array();
-
-
-
-// selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
+// 
+$sql = "SELECT Distinct name,price,type, stock, ID FROM shopapparel order by price asc";
 $result = $conn->query($sql);
-
 // loops through rows until there is 0 rows
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
-
-
-
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
     }
     // if no rows 
 } else {
     echo "0 results";
 }
-
 $conn->close();
-
 						if (isset($items[0]['name'])) {
 									
 										for ($i=0; $i <count($items) ; $i++) { 
-									
+									$outOfStock= false;
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
-
 											echo '<div class="overlay-container">';
 											if ($items[$i]['stock'] ==0) {
+												$outOfStock = true;
 													echo  '<span class="badge">SOLD OUT</span>';
 											}else{
 											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
@@ -659,29 +550,48 @@ $conn->close();
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
-												echo '<div class="overlay-to-top links">
+												if($outOfStock){
+		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
-
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
 										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}
+										
 									}
-
-										}				
-
+										}
 										
 										?>
 
@@ -698,81 +608,90 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "shopapparel";
-
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 // array to hold items for each row from data base
 $items = array();
-
-
-
 // selecting only name and price to display on shop page
-$sql = "SELECT Distinct name,price,type, stock FROM shopapparel order by price asc";
+$sql = "SELECT Distinct name,price,type, stock, rating, shopapparel.ID FROM shopapparel, productreview WHERE shopapparel.name = productreview.clothingName AND rating >=4";
 $result = $conn->query($sql);
-
 // loops through rows until there is 0 rows
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"]);
-
-
-
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "rating"=> $row["rating"], "pid"=> $row["ID"]);
     }
     // if no rows 
 } else {
     echo "0 results";
 }
-
 $conn->close();
-
 						if (isset($items[0]['name'])) {
 									
 										for ($i=0; $i <count($items) ; $i++) { 
-									
+									$outOfStock= false;
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
-
 											echo '<div class="overlay-container">';
 											if ($items[$i]['stock'] ==0) {
-													echo  '<span class="badge">SOLD OUT</span>';
+												$outOfStock = true;
+													echo  '<span class="badge">SOLD OUT</span>
+													<span class="price">'.$items[$i]["rating"].' star rating</span>';
 											}else{
-											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>
+											<span class="price">'.$items[$i]["rating"].' star rating</span>';
 											}
 										
 													echo '<img src="images/product-3.jpg" alt="">';
 												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
 													
-												echo '<div class="overlay-to-top links">
+											if($outOfStock){
+		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['name'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
-
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['name'].'"> '.$items[$i]["name"].'</a></h3>';
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
 												echo '<p class="small">'.$items[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
 													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
 										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}
+										
 									}
-
-										}				
-
+								}
 										
 										?>
 
@@ -783,6 +702,217 @@ $conn->close();
 							
 									</div>
 								</div>
+<!-- this pill is for categorizing clothing -->
+						<div class="tab-pane" id="pill-5">
+									<div class="row masonry-grid-fitrows grid-space-10">
+										
+							<?php
+										
+// gets server information
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// array to hold items for each row from data base
+$items = array();
+// selecting only name and price to display on shop page
+$sql = "SELECT Distinct name,price,type, stock,ID FROM shopapparel WHERE type = 'T-Shirt'";
+$result = $conn->query($sql);
+// loops through rows until there is 0 rows
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"],"pid"=> $row["ID"]);
+    }
+    // if no rows 
+} else {
+    echo "0 results";
+}
+$conn->close();
+						if (isset($items[0]['name'])) {
+									
+										for ($i=0; $i <count($items) ; $i++) { 
+									$outOfStock= false;
+									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
+										echo '<div class="listing-item white-bg bordered mb-20">';
+											echo '<div class="overlay-container">';
+											if ($items[$i]['stock'] ==0) {
+												$outOfStock = true;
+													echo  '<span class="badge">SOLD OUT</span>';
+											}else{
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>
+											';
+											}
+										
+													echo '<img src="images/product-3.jpg" alt="">';
+												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
+													
+											if($outOfStock){
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}
+										
+									}
+								}
+										
+										?>
+
+									
+							
+								
+								
+							
+									</div>
+								</div>
+<div class="tab-pane" id="pill-6">
+									<div class="row masonry-grid-fitrows grid-space-10">
+										
+							<?php
+										
+// gets server information
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// array to hold items for each row from data base
+$items = array();
+// selecting only name and price to display on shop page
+$sql = "SELECT Distinct name,price,type, stock, ID FROM shopapparel WHERE type = 'Long-Sleeve'";
+$result = $conn->query($sql);
+// loops through rows until there is 0 rows
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      
+    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
+    }
+    // if no rows 
+} else {
+    echo "0 results";
+}
+$conn->close();
+						if (isset($items[0]['name'])) {
+									
+										for ($i=0; $i <count($items) ; $i++) { 
+									$outOfStock= false;
+									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
+										echo '<div class="listing-item white-bg bordered mb-20">';
+											echo '<div class="overlay-container">';
+											if ($items[$i]['stock'] ==0) {
+												$outOfStock = true;
+													echo  '<span class="badge">SOLD OUT</span>';
+											}else{
+											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>
+											';
+											}
+										
+													echo '<img src="images/product-3.jpg" alt="">';
+												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
+													
+											if($outOfStock){
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="#" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}else{
+		echo '<div class="overlay-to-top links">
+														<span class="small">
+															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
+															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+														</span>
+													</div>
+												</div>';
+											echo '<div class="body">
+										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$items[$i]["type"].'</p>';
+												
+													echo '<div class="elements-list clearfix">
+													<span class="price">$'.$items[$i]["price"].'.00</span>
+														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>';
+													}
+										
+									}
+								}
+										
+										?>
+
+									
+							
+								
+								
+							
+									</div>
+								</div>
+
+									</div>
+
+
 							</div>
 							<!-- pills end -->
 							<!-- pagination start -->
@@ -900,7 +1030,7 @@ $conn->close();
 										<ul class="list-icons">
 											<li><i class="fa fa-map-marker pr-10 text-default"></i> One infinity loop, 54100</li>
 											<li><i class="fa fa-phone pr-10 text-default"></i> +00 1234567890</li>
-											<li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
+											<li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>info@theproject.com</a></li>
 										</ul>
 									</div>
 								</div>
@@ -917,7 +1047,7 @@ $conn->close();
 						<div class="subfooter-inner">
 							<div class="row">
 								<div class="col-md-12">
-									<p class="text-center">2018 Oops616. All Rights Reserved</p>
+									<p class="text-center">Copyright © 2017 OOPS. All Rights Reserved</p>
 								</div>
 							</div>
 						</div>
