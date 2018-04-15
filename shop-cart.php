@@ -1,3 +1,45 @@
+<?php 
+
+
+	 include("php/cart.php");
+echo $_SESSION['id'];
+$uid = $_SESSION['id'];
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+$productId = $_POST["item"];
+$quantity = $_POST["quantity"];
+$color = $_POST["color"];
+$size = $_POST["size"];
+$price = $_POST["price"];
+$productType = $_POST["type"];
+	
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
+
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
+
+
+$sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`) VALUES ($uid,'$productName','$productType',$subtotal,$quantity)";
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="zxx" class="ie9"> <![endif]-->
 <!--[if gt IE 9]> <html lang="zxx" class="ie"> <![endif]-->

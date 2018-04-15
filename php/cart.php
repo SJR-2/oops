@@ -1,5 +1,5 @@
 <?php
-
+  session_start(); 
 
 $servername = "localhost";
 $username = "root";
@@ -15,18 +15,19 @@ if ($conn->connect_error) {
 }
 
 $items = array();
+$ud = $_SESSION['id'];
 
 
 
 
-$sql = "SELECT name, price FROM shopapparel";
+$sql = "SELECT `UID`, `productName`, `poductType`, `subtotal`, `unitsInCart` FROM `shopcart` where UID = '$ud'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        //echo  $row["name"] . " ". $row["price"]." " . $row["color"]. " ". $row["size"] ."<br>";
-    	$items[] = array("name" => $row["name"], "price" => $row["price"]);
+       
+    	$items[] = array("uid" => $row["UID"], "productName" => $row["productName"],"productType" =>$row["productType"], "subtotal" => $row["subtotal"], "unitsInCart" =>$row["unitsInCart"]);
 
         
 
@@ -37,12 +38,7 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 
-for($row=0; $row<count($items); $row++){
-echo $items[$row]["price"]. ": price<br>";
-}
 
-
-// $sCart[$count] = array("quantity" =>$_GET['quantity'] ,"productName"=> $_GET['productName'] , "price"=>$_GET['price'], "size"=>$_GET['size'], "color"=> $_GET['color']);
 
 
 

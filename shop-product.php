@@ -437,7 +437,7 @@ $size = array("M", "L", "XL");
 																	</tbody>
 																</table>
 																<div class="panel-body text-right">
-																	<a href="shop-cart.html" class="btn btn-group btn-gray btn-sm">View Cart</a>
+																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
 																	<a href="shop-checkout.html" class="btn btn-group btn-gray btn-sm">Checkout</a>
 																</div>
 															</li>
@@ -620,8 +620,9 @@ $conn->close();
 										</ul>
 									</div>
 									<div class="row grid-space-10">
-										<form   role="form" class="clearfix" action="shop-cart.php" method="get">
-											     <input type='hidden' name='productName' value='<?php $items[0]['name']?>'>
+										<form   role="form" class="clearfix" action="shop-cart.php" method="post">
+											     <input type='hidden' name='item' value='<?php $items[0]['id']?>'>
+											     <input type='hidden' name='type' value='<?php $type?>'>
 											<div class="col-md-4">
 												<div class="form-group">
 													<label for="quantity">Quantity</label>
@@ -654,7 +655,7 @@ $conn->close();
 												echo "<div class='col-md-4'>",
 												"<div class='form-group'>",
 												"<label for='size'>Size</label>",
-													"<select class='form-control' name='color' id='size'>";
+													"<select class='form-control' name='size' id='size'>";
 														
 														for($i=0; $i<count($size);$i++){
 															echo "<option>" .$size[$i]. "</option>";
