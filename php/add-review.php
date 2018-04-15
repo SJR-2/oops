@@ -22,6 +22,7 @@ $rating= $_POST['review'];
 $message= $_POST['message4'];
 $buyagain= $_POST['buyAgain'];
 $productname= $_POST['clothingname'];
+$productId = $_POST["item"];
 
 
 echo $name.'<br>';
@@ -29,14 +30,15 @@ echo $subject.'<br>';
 echo $rating.'<br>';
 echo $message.'<br>';
 echo $buyagain.'<br>';
-echo $productname;
+echo $productname.'<br>';
+echo "id is " .$productId. '<br>';
 
 
 // $sql = "INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`) VALUES ('$name','$subject','$rating','$message',$buyagain,'$productname')";
 
 // prepare and bind
-$stmt = $conn->prepare("INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`)  VALUES (?, ?, ?,?,?,?)");
-$stmt->bind_param("ssisis", $name, $subject, $rating,$message,$buyagain,$productname);
+$stmt = $conn->prepare("INSERT INTO `productreview`(`userName`, `subject`, `rating`, `message`, `buyAgain`, `clothingName`,`ID`)  VALUES (?, ?, ?,?,?,?,?)");
+$stmt->bind_param("ssisisi", $name, $subject, $rating,$message,$buyagain,$productname,$productId);
 $stmt->execute();
 
 echo "New records created successfully";
@@ -49,7 +51,7 @@ $conn->close();
 
 
 ///cross site scripting
- header('location:../shop-product.php?item='.$productname.'');
+ header('location:../shop-product.php?item='.$productId.'');
 
 
 // if ($conn->query($sql) === TRUE) {

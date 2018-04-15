@@ -528,9 +528,9 @@ $size = array("M", "L", "XL");
 											$notBuyAgian =0;
 											for ($x=0; $x <count($review) ; $x++) { 
 
-										if ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 1) {
+										if ($review[$x]["id"] == $val && $review[$x]["buyagain"] == 1) {
 												$buy++;
-											}elseif ($review[$x]["productname"] == $val && $review[$x]["buyagain"] == 0) {
+											}elseif ($review[$x]["id"] == $val && $review[$x]["buyagain"] == 0) {
 											$notBuyAgian++;
 											}
 
@@ -568,7 +568,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-	$sql = "SELECT rating as value_sum FROM `productreview` WHERE clothingName = '$val' ";
+	$sql = "SELECT rating as value_sum FROM `productreview` WHERE ID = $val ";
 	$result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -722,7 +722,7 @@ $conn->close();
 									include("php/clothing-rating.php");
 									$totalReviews =0;
 									for ($i=0; $i <count($review) ; $i++) { 
-											if ($review[$i]["productname"] == $val) {
+											if ($review[$i]["id"] == $val) {
 								
 										$totalReviews++;
 
@@ -763,7 +763,7 @@ $conn->close();
 									$val = $_GET["item"];
 									for ($i=0; $i <count($review) ; $i++) { 
 								
-									if (isset($review) && $review[$i]['productname'] == $val) {
+									if (isset($review) && $review[$i]['id'] == $val) {
 									
 									
 								echo '<div class="comments margin-clear space-top">
@@ -807,7 +807,13 @@ $conn->close();
 									<div class="comments-form" id="f1" >
 										<h2 class="title">Add your Review</h2>
 										<form role="form" id="comment-form" action="php/add-review.php" method="post">
-											
+											<?php 
+													$itemId = $_GET['item'];
+
+											echo '<input type="hidden" name="item" value="'.$itemId.'">'; 
+
+
+											?>
 											
 											<div class="form-group has-feedback">
 												<label for="name4">Name</label>
@@ -843,8 +849,8 @@ $conn->close();
 
 											</div>	
 											<?php
-											$val = $_GET["item"];
-			                               echo '<input type="hidden" name="clothingname" value="'.$val.'">';
+											//$val = $_GET["item"];
+			                               echo '<input type="hidden" name="clothingname" value="'.$name.'">';
 											echo '<input type="submit" value="submit" name="s1" class="btn btn-default">';
 											?>
 										</form>
