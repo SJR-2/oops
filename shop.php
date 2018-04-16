@@ -397,7 +397,7 @@
 								<div class="tab-pane active" id="pill-1">						
 									<div class="row masonry-grid-fitrows grid-space-10">
 										<?php
-										
+										$x=1;
 										if (isset($items[0]['name'])) {
 									
 										for ($i=0; $i <count($items) ; $i++) { 
@@ -412,8 +412,9 @@
 											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
 											}
 										
-													echo '<img src="images/product-3.jpg" alt="">';
-												echo '<a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>';
+													echo '<img src="images/product-'.$x.'.jpg" alt="">';
+												echo '<a class="overlay-link popup-img-single" href="images/product-'.$x.'.jpg"><i class="fa fa-search-plus"></i></a>';
+												$x++;
 													if($outOfStock){
 		echo '<div class="overlay-to-top links">
 														<span class="small">
