@@ -181,59 +181,16 @@ $size = array("M", "L", "XL");
 										</div>
 									</div>
 									<ul class="list-inline hidden-sm hidden-xs">
-										<li><i class="fa fa-map-marker pr-5 pl-10"></i>One Infinity Loop Av, Tk 123456</li>
-										<li><i class="fa fa-phone pr-5 pl-10"></i>+12 123 123 123</li>
-										<li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
+										<li><i class="fa fa-map-marker pr-5 pl-10"></i>Grand Rapids, MI 49507</li>
+										<!-- <li><i class="fa fa-phone pr-5 pl-10"></i>number</li>
+ -->										<li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
 							</div>
 							<div class="col-xs-9 col-sm-6 col-md-3">
 
-								<!-- header-top-second start -->
-								<!-- ================ -->
-								<div id="header-top-second"  class="clearfix">
-
-									<!-- header top dropdowns start -->
-									<!-- ================ -->
-									<!-- <div class="header-top-dropdown text-right"> -->
-										<!-- <div class="btn-group">
-											<a href="page-signup.html" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
-										</div> -->
-										<!-- <div class="btn-group dropdown">
-											<button type="button" class="btn dropdown-toggle btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
-											<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-												<li>
-													<form class="login-form margin-clear">
-														<div class="form-group has-feedback">
-															<label class="control-label">Username</label>
-															<input type="text" class="form-control" placeholder="">
-															<i class="fa fa-user form-control-feedback"></i>
-														</div>
-														<div class="form-group has-feedback">
-															<label class="control-label">Password</label>
-															<input type="password" class="form-control" placeholder="">
-															<i class="fa fa-lock form-control-feedback"></i>
-														</div>
-														<button type="submit" class="btn btn-gray btn-sm">Log In</button>
-														<span class="pl-5 pr-5">or</span>
-														<button type="submit" class="btn btn-default btn-sm">Sing Up</button>
-														<ul>
-															<li><a href="#">Forgot your password?</a></li>
-														</ul>
-														<span class="text-center">Login with</span>
-														<ul class="social-links circle small colored clearfix">
-															<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
-															<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
-															<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-														</ul>
-													</form>
-												</li>
-											</ul>
-										</div> -->
-									<!-- </div> -->
-									<!--  header top dropdowns end -->
-								</div>
+								
 								<!-- header-top-second end -->
 							</div>
 						</div>
@@ -257,64 +214,7 @@ $size = array("M", "L", "XL");
 								<!-- ================ -->
 								<div class="header-first clearfix">
 									
-									<!-- header dropdown buttons -->
-									<div class="header-dropdown-buttons visible-xs">
-									<!-- 	<div class="btn-group dropdown">
-											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></button>
-											<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-												<li>
-													<form role="search" class="search-box margin-clear">
-														<div class="form-group has-feedback">
-															<input type="text" class="form-control" placeholder="Search">
-															<i class="icon-search form-control-feedback"></i>
-														</div>
-													</form>
-												</li>
-											</ul>
-										</div> -->
-										<div class="btn-group dropdown">
-											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg">8</span></button>
-											<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
-												<li>
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th class="quantity">QTY</th>
-																<th class="product">Product</th>
-																<th class="amount">Subtotal</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td class="quantity">2 x</td>
-																<td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-																<td class="amount">$199.00</td>
-															</tr>
-															<tr>
-																<td class="quantity">3 x</td>
-																<td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-																<td class="amount">$299.00</td>
-															</tr>
-															<tr>
-																<td class="quantity">3 x</td>
-																<td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-																<td class="amount">$1499.00</td>
-															</tr>
-															<tr>
-																<td class="total-quantity" colspan="2">Total 8 Items</td>
-																<td class="total-amount">$1997.00</td>
-															</tr>
-														</tbody>
-													</table>
-													<div class="panel-body text-right">
-														<a href="shop-cart.html" class="btn btn-group btn-gray btn-sm">View Cart</a>
-														<a href="shop-checkout.html" class="btn btn-group btn-gray btn-sm">Checkout</a>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<!-- header dropdown buttons end-->
+							
 									
 									<!-- logo -->
 									<div id="logo" class="logo">
@@ -389,19 +289,7 @@ $size = array("M", "L", "XL");
 												
 												<!-- header dropdown buttons -->
 												<div class="header-dropdown-buttons hidden-xs ">
-													<!-- <div class="btn-group dropdown">
-														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-search"></i></button>
-														<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
-															<li>
-																<form role="search" class="search-box margin-clear">
-																	<div class="form-group has-feedback">
-																		<input type="text" class="form-control" placeholder="Search">
-																		<i class="icon-search form-control-feedback"></i>
-																	</div>
-																</form>
-															</li>
-														</ul>
-													</div> -->
+													
 													<div class="btn-group dropdown">
 														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg">8</span></button>
 														<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
@@ -437,8 +325,8 @@ $size = array("M", "L", "XL");
 																	</tbody>
 																</table>
 																<div class="panel-body text-right">
-																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
-																	<a href="shop-checkout.html" class="btn btn-group btn-gray btn-sm">Checkout</a>
+																<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
+														<a href="shop-checkout.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
 																</div>
 															</li>
 														</ul>
@@ -941,8 +829,8 @@ $conn->close();
 										</ul>
 										<div class="separator-2"></div>
 										<ul class="list-icons">
-											<li><i class="fa fa-map-marker pr-10 text-default"></i> One infinity loop, 54100</li>
-											<li><i class="fa fa-phone pr-10 text-default"></i> +00 1234567890</li>
+											<li><i class="fa fa-map-marker pr-10 text-default"></i>Grand Rapids, MI 49507</li>
+											<!-- <li><i class="fa fa-phone pr-10 text-default"></i>number</li> -->
 											<li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
 										</ul>
 									</div>

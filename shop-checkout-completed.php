@@ -1,46 +1,9 @@
 <?php 
-
-
-	 include("php/cart.php");
-
-$uid = $_SESSION['id'];
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-$productId = $_POST["item"];
-$quantity = $_POST["quantity"];
-$color = $_POST["color"];
-$size = $_POST["size"];
-$subtotal = $_POST["price"];
-$productName= $_POST["productName"];
-$productType = $_POST["type"];
-	
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "shopapparel";
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
-
-
-
-$sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`) VALUES ($uid,'$productName','$productType',$subtotal,$quantity)";
-}
-
-
+session_start();
 
 
 ?>
+
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="zxx" class="ie9"> <![endif]-->
 <!--[if gt IE 9]> <html lang="zxx" class="ie"> <![endif]-->
@@ -50,7 +13,7 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 
 	<head>
 		<meta charset="utf-8">
-		<title>OOPS | Shopping Cart</title>
+		<title>The Project | Thank You</title>
 		<meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
 		<meta name="author" content="htmlcoder.me">
 
@@ -129,7 +92,7 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 							<div class="col-xs-3 col-sm-6 col-md-9">
 								<!-- header-top-first start -->
 								<!-- ================ -->
-								<div class="header-top-first clearfix" >
+								<div class="header-top-first clearfix">
 									<ul class="social-links circle small clearfix hidden-xs">
 										<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
 										<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
@@ -156,14 +119,20 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 										</div>
 									</div>
 									<ul class="list-inline hidden-sm hidden-xs">
-										<li><i class="fa fa-map-marker pr-5 pl-10"></i>Grand Rapids, MI 40507</li>
+										<li><i class="fa fa-map-marker pr-5 pl-10"></i>Grand Rapids, MI 49507</li>
 										<!-- <li><i class="fa fa-phone pr-5 pl-10"></i>number</li> -->
 										<li><i class="fa fa-envelope-o pr-5 pl-10"></i>shop@oops616.com</li>
 									</ul>
 								</div>
 								<!-- header-top-first end -->
 							</div>
-					
+							<div class="col-xs-9 col-sm-6 col-md-3">
+
+								<!-- header-top-second start -->
+								<!-- ================ -->
+								<div id="header-top-second"  class="clearfix">
+								<!-- header-top-second end -->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -176,7 +145,7 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 				<!-- "full-width": mandatory class for the full-width menu layout -->
 				<!-- "centered": mandatory class for the centered logo layout -->
 				<!-- ================ --> 
-				<header class="header  fixed    clearfix" >
+				<header class="header  fixed    clearfix">
 					
 					<div class="container">
 						<div class="row">
@@ -185,15 +154,16 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 								<!-- ================ -->
 								<div class="header-first clearfix">
 									
-					
+							
 									
 									<!-- logo -->
-									<div id="logo" class="logo" style="margin-bottom: 1em;">
+										<div id="logo" class="logo" style="margin-bottom: 1em;">
 										<a href="shop.php"><img id="logo_img" src="op.jpg" alt="OOPS!" style="border-radius: 50%; height: 7em; "></a>
 									</div>
+
 									<!-- name-and-slogan -->
-									<!-- <div class="site-slogan" style="">
-										Its A Life Style
+									<!-- <div class="site-slogan">
+										ITS A LIFE STYLE
 									</div> -->
 
 								</div>
@@ -233,71 +203,29 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
 												<!-- main-menu -->
-												<ul class="nav navbar-nav ">	
+												<ul class="nav navbar-nav ">
+												
+													
+														
+													
 													<li class="active">
-														<a href="shop.php"  >Back To Shop</a>
+														<a href="shop.php"  >Back To Home</a>
 													
 
-													</li></ul>
+													</li>
+													
+												</ul>
 												<!-- main-menu end -->
 												
-												<!-- header dropdown buttons -->
-												<div class="header-dropdown-buttons hidden-xs ">
-										
-													<div class="btn-group dropdown">
-														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg">8</span></button>
-														<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
-															<li>
-																<table class="table table-hover">
-																	<thead>
-																		<tr>
-																			<th class="quantity">QTY</th>
-																			<th class="product">Product</th>
-																			<th class="amount">Subtotal</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr>
-																			<td class="quantity">2 x</td>
-																			<td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-																			<td class="amount">$199.00</td>
-																		</tr>
-																		<tr>
-																			<td class="quantity">3 x</td>
-																			<td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-																			<td class="amount">$299.00</td>
-																		</tr>
-																		<tr>
-																			<td class="quantity">3 x</td>
-																			<td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-																			<td class="amount">$1499.00</td>
-																		</tr>
-																		<tr>
-																			<td class="total-quantity" colspan="2">Total 8 Items</td>
-																			<td class="total-amount">$1997.00</td>
-																		</tr>
-																	</tbody>
-																</table>
-																<div class="panel-body text-right">
-																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
-														<a href="shop-checkout.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<!-- header dropdown buttons end-->
+												
 												
 											</div>
 
 										</div>
-
 									</nav>
-
 									<!-- navbar end -->
 
 								</div>
-
 								<!-- main-navigation end -->
 								</div>
 								<!-- header-second end -->
@@ -310,14 +238,27 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 				<!-- header end -->
 			</div>
 			<!-- header-container end -->
+	
+								</div>
+								<!-- main-navigation end -->
+								</div>
+								<!-- header-second end -->
+					
+							</div>
+						</div>
+					</div>
+					
+				</header>
+				<!-- header end -->
+			</div>
 		
 			<!-- breadcrumb start -->
 			<!-- ================ -->
 			<div class="breadcrumb-container">
 				<div class="container">
 					<ol class="breadcrumb">
-						<li><i class="fa fa-home pr-10"></i><a href="index-landing.php">Home</a></li>
-						<li class="active">Shopping Cart</li>
+						<li><i class="fa fa-home pr-10"></i><a href="shop.php">Home</a></li>
+						<li class="active">Thank You</li>
 					</ol>
 				</div>
 			</div>
@@ -332,77 +273,116 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 
 						<!-- main start -->
 						<!-- ================ -->
+						<div class="main col-md-8 col-md-offset-2">
+
+							<!-- page-title start -->
+							<!-- ================ -->
+							<h1 class="page-title text-center">Thank You <i class="fa fa-smile-o pl-10"></i></h1>
+							<div class="separator"></div>
+						
+							<p class="text-center">
+								<a href="shop.php" class="btn btn-default btn-lg">Continue Shopping!</a>	
+							</p>
+
+						</div>
+						<!-- main end -->
+
+					</div>
+				</div>
+								<div class="container">
+					<div class="row">
+
+						<!-- main start -->
+						<!-- ================ -->
 						<div class="main col-md-12">
 
 							<!-- page-title start -->
 							<!-- ================ -->
-							<h1 class="page-title">Shopping Cart</h1>
+							<h1 class="page-title">Shop Product</h1>
 							<div class="separator-2"></div>
 							<!-- page-title end -->
 
-							<table class="table cart table-hover table-colored">
-								<thead>
-									<tr>
-										<th>Product </th>
-										<th>Price </th>
-										<th>Quantity</th>
-										<th>Remove </th>
-										<th class="amount">Total </th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-										<td class="price">$99.50 </td>
-										<td class="quantity">
-											<div class="form-group">
-												<input type="text" class="form-control" value="2">
-											</div>											
-										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$199.00 </td>
-									</tr>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
-										<td class="price"> $99.66 </td>
-										<td class="quantity">
-											<div class="form-group">
-												<input type="text" class="form-control" value="3">
-											</div>											
-										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$299.00 </td>
-									</tr>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
-										<td class="price"> $499.66 </td>
-										<td class="quantity">
-											<div class="form-group">
-												<input type="text" class="form-control" value="3">
-											</div>											
-										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$1499.00 </td>
-									</tr>
-								<!-- 	<tr>
-										<td colspan="3">Discount Coupon</td>
-										<td colspan="2">
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="coupon code">
-											</div>											
-										</td>
-									</tr> -->
-									<tr>
-										<td class="total-quantity" colspan="4">Total 8 Items</td>
-										<td class="total-amount">$1997.00</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="text-right">	
-								<a href="shop-cart.php" class="btn btn-group btn-default">Update Cart</a>
-								<a href="shop-checkout.php" class="btn btn-group btn-default">Checkout</a>
+							<div id="invoice-container" class="invoice-container">
+								<div class="row">
+									<div class="col-sm-6">
+									
+										
+										<address class="small">
+											<strong>Oops616</strong><br>
+											Grand Rapids, MI 495077<br>
+											<!-- <abbr title="Phone">P:</abbr> number<br> -->
+											E-mail: <a href="mailto:shop@oops616.com">shop@oops616.com</a>
+										</address>
+									</div>
+									<div class="col-sm-offset-3 col-sm-3">
+								<!-- 		<p class="text-right small"><strong>Invoice #001</strong> <br> May 15, 2015</p> -->
+										<h5 class="text-right">Client</h5>
+										<p class="text-right small">
+											<?php echo '<strong>User name:</strong> <span>'.$_SESSION["username"].'</span> <br>'; ?>
+			
+										</p>
+									</div>
+								</div>
+							
+								<table class="table cart table-bordered">
+									<thead>
+										<tr>
+											<th>Description </th>
+											<th>Price </th>
+											<th>Quantity</th>
+											<th class="amount">Total </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
+											<td class="price">$99.50 </td>
+											<td class="quantity">2 </td>
+											<td class="amount">$199.00 </td>
+										</tr>
+										<tr>
+											<td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
+											<td class="price"> $99.66 </td>
+											<td class="quantity">3 </td>
+											<td class="amount">$299.00 </td>
+										</tr>
+										<tr>
+											<td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
+											<td class="price"> $499.66 </td>
+											<td class="quantity">3 </td>
+											<td class="amount">$1499.00 </td>
+										</tr>
+										<tr>
+											<td class="total-quantity" colspan="3">Subtotal</td>
+											<td class="amount">$1997.00</td>
+										</tr>
+										<tr>
+											<td class="total-quantity" colspan="1">Discount Coupon</td>
+											<td class="price">TheProject25672</td>
+											<td class="price">-20%</td>
+											<td class="amount">-$399.40</td>
+										</tr>
+										<tr>
+											<td class="total-quantity" colspan="2">Sales Tax</td>
+											<td class="price">+10%</td>
+											<td class="amount">$159.76</td>
+										</tr>
+										<tr>										
+											<td class="total-quantity" colspan="3">Shipping</td>
+											<td class="amount">$12.00</td>
+										</tr>
+										<tr>
+											<td class="total-quantity" colspan="3">Total 8 Items</td>
+											<td class="total-amount">$1769.36</td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="small">If you have any questions concerning this invoice, contact <strong>Oops616</strong>, email: <strong>shop@oops616.com</strong> <br> Thank you for your business!</p>
+								<hr>
 							</div>
-
+							<div class="text-right">	
+								<button onclick="print_window();" class="btn btn-print btn-default-transparent btn-hvr hvr-shutter-out-horizontal">Print <i class="fa fa-print pl-10"></i></button>
+							</div>
 						</div>
 						<!-- main end -->
 
@@ -410,8 +390,9 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 				</div>
 			</section>
 			<!-- main-container end -->
-
-			<!-- section start -->
+			
+			
+		<!-- section start -->
 			<!-- ================ -->
 			<section class="pv-30 dark-translucent-bg padding-bottom-clear" style="background-image:url('images/la.jpeg');background-position: 50% 32%; height: 25em;">
 				<div class="container">
@@ -455,6 +436,7 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 			<!-- section end -->
 
 			
+	
 
 			<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
 			<!-- ================ -->
@@ -487,8 +469,8 @@ $sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `
 										<div class="separator-2"></div>
 										<ul class="list-icons">
 											<li><i class="fa fa-map-marker pr-10 text-default"></i>Grand Rapids, MI 49507</li>
-											<!-- <li><i class="fa fa-phone pr-10 text-default"></i> number</li> -->
-											<li><a href="mailto:shop@oops616.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
+										<!-- 	<li><i class="fa fa-phone pr-10 text-default"></i>number</li> -->
+											<li><a href="mailto:info@theproject.com"><i class="fa fa-envelope-o pr-10"></i>shop@oops616.com</a></li>
 										</ul>
 									</div>
 								</div>

@@ -50,7 +50,7 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
-    $_SESSION['id'] = $id;
+    $_SESSION['id'] = $user['id'];
   	$_SESSION['success'] = "You are now logged in";
   	header('location: shop.php');
   }
@@ -73,7 +73,7 @@ if (isset($_POST['login_user'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
-      $_SESSION['id'] = $id;
+      $_SESSION['id'] = $user['id'];
   	  $_SESSION['success'] = "You are now logged in";
   	  header('location: shop.php');
   	}else {
