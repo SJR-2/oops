@@ -6,14 +6,22 @@
 $uid = $_SESSION['id'];
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+echo "size: ". $_POST["size"]. "<br>";
+echo "color: ".$_POST["color"]. "<br>";
+echo "amount: ". $_POST["quantity"]. "<br>";
+echo "price: ". $_POST["price"]. "<br>";
+echo "name: ". $_POST["productName"]. "<br>";
+echo "type: ". $_POST["productType"]. "<br>";
+echo "ID: ". $_POST["productID"]. "<br>";
+echo "UID".$ud;
 
-$productId = $_POST["item"];
+$productId = $_POST["productID"];
 $quantity = $_POST["quantity"];
 $color = $_POST["color"];
 $size = $_POST["size"];
 $subtotal = $_POST["price"];
 $productName= $_POST["productName"];
-$productType = $_POST["type"];
+$productType = $_POST["productType"];
 	
 
 
@@ -34,7 +42,16 @@ if ($conn->connect_error) {
 
 
 
-$sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`) VALUES ($uid,'$productName','$productType',$subtotal,$quantity)";
+$sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`,`productID`) VALUES ($uid,'$productName','$productType',$subtotal,$quantity,$productId)";
+
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 }
 
 

@@ -1,5 +1,8 @@
 <?php
 
+include("php/cart.php");
+
+
 // get value after link is clicked for out fit
 $val = $_GET["item"];
 
@@ -18,8 +21,8 @@ if ($conn->connect_error) {
 }
 
 
-// array to hold items for each row from data base
-$items = array();
+// // array to hold items for each row from data base
+// $items = array();
 
 if ($stmt = $conn->prepare("SELECT Distinct name, price, color, type FROM shopapparel where ID = ? ")) {
 	
@@ -36,28 +39,13 @@ $stmt->bind_result($name,$price,$color,$type);
 $stmt->fetch();
 $stmt->close();
 }
-// selecting only name and price to display on shop page
-// $sql = "SELECT Distinct name, price, color, type FROM shopapparel where name = '$val' ";
-// $result = $conn->query($sql);
 
-// // loops through rows until there is 0 rows
-// if ($result->num_rows > 0) {
-//     // output data of each row
-//     while($row = $result->fetch_assoc()) {
-      
-//     	$items[] = array("name" => $row["name"], "price" => $row["price"], "color" => $row["color"], "type" => $row["type"]);
-//     }
-//     // if no rows 
-// } else {
-//    // echo "0 results";
-// }
 
 
 $conn->close();
 
 
 
-//echo $val . " : was selected";
 
 
 
@@ -510,10 +498,7 @@ $conn->close();
 									<div class="row grid-space-10">
 										<form   role="form" class="clearfix" action="shop-cart.php" method="post">
 
-											   <input type='hidden' name='productName' value='<?php $name?>'>
-
-											     <input type='hidden' name='item' value='<?php $items[0]['id']?>'>
-											     <input type='hidden' name='type' value='<?php $type?>'>
+											
 
 											<div class="col-md-4">
 												<div class="form-group">
@@ -562,17 +547,7 @@ $conn->close();
 											 ?>
 		
 								
-											<!-- <div class="col-md-4">
-												<div class="form-group">
-													<label for="size">Size</label>
-													<select class="form-control" name="size" id="size">
-													<?php 
-
-
-													?>
-													</select>
-												</div>
-											</div> -->
+									
 											<div class="col-md-12 text-right">
 												
 											</div>
@@ -583,6 +558,10 @@ $conn->close();
 										<!-- show price and get price for cart -->
 									<?php echo "<span class='product price'><i class='icon-tag pr-10'></i>$".$price.".00</span>"  ?>	
 							        <?php echo "<input type='hidden' name='price' value=".$price.">"	?>
+							       <input type="hidden" name="productName" value="<?php echo $name; ?>">
+							          <?php echo "<input type='hidden' name='productType' value=".$type.">"	?>
+							           <?php echo "<input type='hidden' name='productID' value=".$val.">"	?>
+
 
 									<div class="product elements-list pull-right clearfix">
 											<input type="submit" value="Add to Cart" class="margin-clear btn btn-default">
@@ -627,28 +606,7 @@ $conn->close();
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content padding-top-clear padding-bottom-clear">
-						<!-- 		<div class="tab-pane fade in active" id="h2tab2">
-									<h4 class="space-top">Specifications</h4>
-									<hr>
-									<dl class="dl-horizontal">
-										<dt>Consectetur</dt>
-										<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
-										<dt>Culla</dt>
-										<dd>Adipisci autem illo hic itaque nulla velit quod laboriosam ipsum in illum!</dd>
-										<dt>Quas</dt>
-										<dd>Velit mollitia vel nemo, repudiandae quas nisi consectetur maiores beatae.</dd>
-										<dt>Sapiente</dt>
-										<dd>Dolor, architecto, accusamus. Explicabo, culpa hic sapiente amet libero, recusandae laudantium consequatur velit possimus ratione quo. Ipsum maxime officia quasi quos magni!</dd>
-										<dt>Dignissimos</dt>
-										<dd>Odio cum deleniti mollitia, quisquam dignissimos voluptatem, unde rem alias.</dd>
-										<dt>Adipisicing</dt>
-										<dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</dd>
-										<dd>Tempora rerum veritatis nam blanditiis.</dd>
-										<dt>Werspiciatis</dt>
-										<dd>Rem nostrum sit magnam debitis quidem perspiciatis fuga fugit.</dd>
-									</dl>
-									<hr>
-								</div> -->
+				
 								<div class="tab-pane fade in active" id="h2tab3">
 									<!-- comments start -->
 									<?php 

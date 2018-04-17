@@ -14,26 +14,51 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$uname = $_SESSION["username"];
+$uid = array();
+$sql = "SELECT `id` FROM `users` WHERE username = '$uname'";
+$result = $conn->query($sql);
+
+if($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+       
+    	$uid = array("uid" => $row["id"]);
+
+        
+
+    }
+} else {
+    // echo "0 results from cart with user ID = " .$ud ;
+}
+
+
+
+
+ $_SESSION['id'] = $uid["uid"];
+
+$ud = $_SESSION['id'];
+
 $items = array();
 $ud = $_SESSION['id'];
 
 
 
 
-$sql = "SELECT `UID`, `productName`, `poductType`, `subtotal`, `unitsInCart` FROM `shopcart` where UID = '$ud'";
+$sql = "SELECT `UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`,`productID` FROM `shopcart` where UID = '$ud'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
        
-    	$items[] = array("uid" => $row["UID"], "productName" => $row["productName"],"productType" =>$row["productType"], "subtotal" => $row["subtotal"], "unitsInCart" =>$row["unitsInCart"]);
+    	$items[] = array("uid" => $row["UID"], "productName" => $row["productName"],"productType" =>$row["productType"], "subtotal" => $row["subtotal"], "unitsInCart" =>$row["unitsInCart"], "productID" =>$row["productID"]);
 
         
 
     }
 } else {
-    echo "0 results from cart with user ID = " .$ud ;
+  // echo "0 results"; 
 }
 
 $conn->close();
