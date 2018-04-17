@@ -45,7 +45,7 @@ $ud = $_SESSION['id'];
 
 
 
-$sql = "SELECT `UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`,`productID` FROM `shopcart` where UID = '$ud'";
+$sql = "SELECT * FROM `shopcart` where UID = '$ud'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
