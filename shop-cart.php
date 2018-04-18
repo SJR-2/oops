@@ -336,7 +336,7 @@ for ($i=0; $i <count($items) ; $i++) {
 $total =0;
 
 for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
-	$total = $items[$x]["subtotal"] +$total;
+	$total = $items[$i]["subtotal"] +$total;
 }
 $totalBill = $total + $totalBill;
 									echo '<td class="amount">$'.$total.'.00 </td>
