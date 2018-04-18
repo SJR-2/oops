@@ -45,14 +45,14 @@ $ud = $_SESSION['id'];
 
 
 
-$sql = "SELECT * FROM `shopcart` where UID = '$ud'";
+$sql = "SELECT * FROM `shopcart` where UID = $ud";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
        
-    	$items[] = array("uid" => $row["UID"], "productName" => $row["productName"],"productType" =>$row["productType"], "subtotal" => $row["subtotal"], "unitsInCart" =>$row["unitsInCart"], "productID" =>$row["productID"]);
+    	$items[] = array("uid" => $row["UID"], "productName" => $row["productName"], "subtotal" => $row["subtotal"], "unitsInCart" =>$row["unitsInCart"], "productID" =>$row["productID"], "size" => $row["size"]);
 
         
 

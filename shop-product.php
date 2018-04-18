@@ -496,7 +496,7 @@ $conn->close();
 										</ul>
 									</div>
 									<div class="row grid-space-10">
-										<form   role="form" class="clearfix" action="shop-cart.php" method="post">
+										<form   role="form" class="clearfix" action="php/add-cart.php" method="post">
 
 											
 

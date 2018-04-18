@@ -3,56 +3,7 @@
 
 	 include("php/cart.php");
 
-$uid = $_SESSION['id'];
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-echo "size: ". $_POST["size"]. "<br>";
-echo "color: ".$_POST["color"]. "<br>";
-echo "amount: ". $_POST["quantity"]. "<br>";
-echo "price: ". $_POST["price"]. "<br>";
-echo "name: ". $_POST["productName"]. "<br>";
-echo "type: ". $_POST["productType"]. "<br>";
-echo "ID: ". $_POST["productID"]. "<br>";
-echo "UID".$ud;
-
-$productId = $_POST["productID"];
-$quantity = $_POST["quantity"];
-$color = $_POST["color"];
-$size = $_POST["size"];
-$subtotal = $_POST["price"];
-$productName= $_POST["productName"];
-$productType = $_POST["productType"];
-	
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "shopapparel";
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
-
-
-
-$sql = "INSERT INTO `shopcart`(`UID`, `productName`, `poductType`, `subtotal`, `unitsInCart`,`productID`) VALUES ($uid,'$productName','$productType',$subtotal,$quantity,$productId)";
-
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-}
 
 
 
@@ -368,39 +319,34 @@ $conn->close();
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-										<td class="price">$99.50 </td>
+<?php 
+
+if(isset($items)){
+	$totalBill =0;
+for ($i=0; $i <count($items) ; $i++) { 
+	echo '	<tr class="remove-data">
+										<td class="product"><a href="shop-product.php?item='.$items[$i]["productID"].'">'.$items[$i]["productName"].'</a> <small>Size: '.$items[$i]["size"].'</small></td>
+										<td class="price">$'.$items[$i]["subtotal"].'.00 </td>
 										<td class="quantity">
 											<div class="form-group">
-												<input type="text" class="form-control" value="2">
+												<div class="form-control">'.$items[$i]["unitsInCart"].'</div>
 											</div>											
 										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$199.00 </td>
-									</tr>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
-										<td class="price"> $99.66 </td>
-										<td class="quantity">
-											<div class="form-group">
-												<input type="text" class="form-control" value="3">
-											</div>											
-										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$299.00 </td>
-									</tr>
-									<tr class="remove-data">
-										<td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
-										<td class="price"> $499.66 </td>
-										<td class="quantity">
-											<div class="form-group">
-												<input type="text" class="form-control" value="3">
-											</div>											
-										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>
-										<td class="amount">$1499.00 </td>
-									</tr>
+										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>';
+$total =0;
+
+for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
+	$total = $items[$x]["subtotal"] +$total;
+}
+$totalBill = $total + $totalBill;
+									echo '<td class="amount">$'.$total.'.00 </td>
+									</tr>';
+										
+}
+}
+?>
+<!-- 
+			
 								<!-- 	<tr>
 										<td colspan="3">Discount Coupon</td>
 										<td colspan="2">
@@ -410,8 +356,26 @@ $conn->close();
 										</td>
 									</tr> -->
 									<tr>
-										<td class="total-quantity" colspan="4">Total 8 Items</td>
-										<td class="total-amount">$1997.00</td>
+										<?php 
+
+										$totalQ=0;
+										
+if (isset($items)) {
+		for ($i=0; $i <count($items) ; $i++) { 
+		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
+
+										}
+}
+									
+
+echo '<td class="total-quantity" colspan="4">Total '.$totalQ.' Items</td>';
+
+
+echo '<td class="total-amount">$'.$totalBill.'.00</td>';
+
+										?>
+										
+										
 									</tr>
 								</tbody>
 							</table>
