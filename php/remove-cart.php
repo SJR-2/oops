@@ -32,7 +32,7 @@ $sql = "DELETE FROM `shopcart` WHERE UID = $ud AND unitsInCart = $units AND prod
 
 
 if ($conn->query($sql) === TRUE) {
-	header("location:../shop-checkout.php");
+	header("location:../shop-cart.php");
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

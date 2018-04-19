@@ -197,7 +197,28 @@
 												</button>
 												
 											</div>
+<ul class="nav navbar-nav ">
 
+													<!-- mega-menu start -->
+													<!-- mega-menu end -->
+													<!-- mega-menu start -->
+													
+													<!-- mega-menu end -->
+													
+													<!-- mega-menu start -->
+													
+													<!-- mega-menu end -->
+												
+													
+														
+													
+													<li class="active">
+														<a href="shop.php"  >Back To Shop</a>
+													
+
+													</li>
+													
+												</ul>
 											<?php include("php/cart-layout.php") ?>
 												
 											</div>
@@ -235,8 +256,6 @@
 			</div>
 			<!-- breadcrumb end -->
 
-			<!-- main-container start -->
-			<!-- ================ -->
 			<section class="main-container">
 
 				<div class="container">
@@ -263,7 +282,10 @@
 									</tr>
 								</thead>
 								<tbody>
+
+							
 <?php 
+
 
 if(isset($items)){
 	$totalBill =0;
@@ -276,7 +298,11 @@ for ($i=0; $i <count($items) ; $i++) {
 												<div class="form-control">'.$items[$i]["unitsInCart"].'</div>
 											</div>											
 										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>';
+										<form action="php/remove-cart.php" method="post">
+										<input type="hidden" name="id" value="'.$items[$i]["productID"].'">
+										<input type="hidden" name="units" value="'.$items[$i]["unitsInCart"].'">
+									
+										<td class="remove"><input type="submit" value="Remove" class="btn btn-sm btn-default"></td></form>';
 $total =0;
 
 for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
@@ -324,8 +350,8 @@ echo '<td class="total-amount">$'.$totalBill.'.00</td>';
 								</tbody>
 							</table>
 							<div class="text-right">	
-								<a href="shop-cart.php" class="btn btn-group btn-default">Update Cart</a>
-								<a href="shop-checkout.php" class="btn btn-group btn-default">Checkout</a>
+								
+								<a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a>
 							</div>
 
 						</div>
@@ -335,7 +361,6 @@ echo '<td class="total-amount">$'.$totalBill.'.00</td>';
 				</div>
 			</section>
 			<!-- main-container end -->
-
 			<!-- section start -->
 			<!-- ================ -->
 			<section class="pv-30 dark-translucent-bg padding-bottom-clear" style="background-image:url('images/la.jpeg');background-position: 50% 32%; height: 25em;">

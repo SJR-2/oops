@@ -76,7 +76,7 @@
 																</table>
 																<div class="panel-body text-right">
 																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
-														<a href="shop-checkout.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
+														<a href="shop-checkout-completed.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
 																</div>
 															</li>
 														</ul>
