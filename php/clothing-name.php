@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // array to hold items for each row from data base
-$items = array();
+$item = array();
 
 
 
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       
-    	$items[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
+    	$item[] = array("name" => $row["name"], "price" => $row["price"], "type"=> $row["type"], "stock" => $row["stock"], "pid"=>$row["ID"]);
 
 
 

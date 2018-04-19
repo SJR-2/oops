@@ -13,7 +13,7 @@
 ?>
 <?php 
 	include("php/clothing-name.php");
-	// include("php/cart.php");
+	//include("php/cart.php");
  ?>
 
 <!DOCTYPE html>
@@ -268,52 +268,7 @@
 													</li></ul>
 												<!-- main-menu end -->
 												
-												<!-- header dropdown buttons -->
-												<div class="header-dropdown-buttons hidden-xs ">
-									
-													<div class="btn-group dropdown">
-														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg">8</span></button>
-														<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
-															<li>
-																<table class="table table-hover">
-																	<thead>
-																		<tr>
-																			<th class="quantity">QTY</th>
-																			<th class="product">Product</th>
-																			<th class="amount">Subtotal</th>
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<tr>
-																			<td class="quantity">2 x</td>
-																			<td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-																			<td class="amount">$199.00</td>
-																		</tr>
-																		<tr>
-																			<td class="quantity">3 x</td>
-																			<td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-																			<td class="amount">$299.00</td>
-																		</tr>
-																		<tr>
-																			<td class="quantity">3 x</td>
-																			<td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-																			<td class="amount">$1499.00</td>
-																		</tr>
-																		<tr>
-																			<td class="total-quantity" colspan="2">Total 8 Items</td>
-																			<td class="total-amount">$1997.00</td>
-																		</tr>
-																	</tbody>
-																</table>
-																<div class="panel-body text-right">
-																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
-														<a href="shop-checkout.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
-																</div>
-															</li>
-														</ul>
-													</div>
-												</div>
-												<!-- header dropdown buttons end-->
+												<?php include("php/cart-layout.php"); ?>
 												
 											</div>
 
@@ -398,18 +353,18 @@
 									<div class="row masonry-grid-fitrows grid-space-10">
 										<?php
 										$x=1;
-										if (isset($items[0]['name'])) {
+										if (isset($item)) {
 									
-										for ($i=0; $i <count($items) ; $i++) { 
+										for ($i=0; $i <count($item) ; $i++) { 
 									$outOfStock = false;
 									echo '<div class="col-md-3 col-sm-6 masonry-grid-item">';
 										echo '<div class="listing-item white-bg bordered mb-20">';
 											echo '<div class="overlay-container">';
-											if ($items[$i]['stock'] ==0) {
+											if ($item[$i]['stock'] ==0) {
 													echo  '<span class="badge">SOLD OUT</span>';
 													$outOfStock = true;
 											}else{
-											echo  '<span class="badge">'.$items[$i]['stock'].' in stock</span>';
+											echo  '<span class="badge">'.$item[$i]['stock'].' in stock</span>';
 											}
 										
 													echo '<img src="images/product-'.$x.'.jpg" alt="">';
@@ -424,11 +379,11 @@
 													</div>
 												</div>';
 											echo '<div class="body">
-										<h3><a href="#"> '.$items[$i]["name"].'</a></h3>';
-												echo '<p class="small">'.$items[$i]["type"].'</p>';
+										<h3><a href="#"> '.$item[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$item[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
-													<span class="price">$'.$items[$i]["price"].'.00</span>
+													<span class="price">$'.$item[$i]["price"].'.00</span>
 														<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
@@ -438,17 +393,17 @@
 		echo '<div class="overlay-to-top links">
 														<span class="small">
 															<a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-															<a href="shop-product.php?item='.$items[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
+															<a href="shop-product.php?item='.$item[$i]['pid'].'" class="btn-sm-link"><i class="icon-link pr-5"></i>View Details</a>
 														</span>
 													</div>
 												</div>';
 											echo '<div class="body">
-										<h3><a href="shop-product.php?item='.$items[$i]['pid'].'"> '.$items[$i]["name"].'</a></h3>';
-												echo '<p class="small">'.$items[$i]["type"].'</p>';
+										<h3><a href="shop-product.php?item='.$item[$i]['pid'].'"> '.$item[$i]["name"].'</a></h3>';
+												echo '<p class="small">'.$item[$i]["type"].'</p>';
 												
 													echo '<div class="elements-list clearfix">
-													<span class="price">$'.$items[$i]["price"].'.00</span>
-														<a href="shop-product.php?item='.$items[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
+													<span class="price">$'.$item[$i]["price"].'.00</span>
+														<a href="shop-product.php?item='.$item[$i]['pid'].'" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Select item<i class="fa fa-shopping-cart"></i></a>
 													</div>
 												</div>
 											</div>
