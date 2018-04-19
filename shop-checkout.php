@@ -287,6 +287,8 @@ session_start();
 									</tr>
 								</thead>
 								<tbody>
+
+							
 <?php 
 
 
@@ -301,7 +303,11 @@ for ($i=0; $i <count($items) ; $i++) {
 												<div class="form-control">'.$items[$i]["unitsInCart"].'</div>
 											</div>											
 										</td>
-										<td class="remove"><a class="btn btn-remove btn-sm btn-default">Remove</a></td>';
+										<form action="php/remove-cart.php" method="post">
+										<input type="hidden" name="id" value="'.$items[$i]["productID"].'">
+										<input type="hidden" name="units" value="'.$items[$i]["unitsInCart"].'">
+									
+										<td class="remove"><input type="submit" value="Remove" class="btn btn-sm btn-default"></td></form>';
 $total =0;
 
 for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
