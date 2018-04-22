@@ -309,7 +309,7 @@ for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) {
 	$total = $items[$i]["subtotal"] +$total;
 }
 $totalBill = $total + $totalBill;
-									echo '<td class="amount">$'.$total.'.00 </td>
+									echo '<td class="amount">$'.number_format($total, 2, '.', '').'</td>
 									</tr>';
 										
 }
@@ -341,7 +341,7 @@ if (isset($items)) {
 echo '<td class="total-quantity" colspan="4">Total '.$totalQ.' Items</td>';
 
 
-echo '<td class="total-amount">$'.$totalBill.'.00</td>';
+echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 
 										?>
 										

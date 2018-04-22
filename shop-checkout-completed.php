@@ -1,6 +1,9 @@
 <?php 
 session_start();
+
 include("php/cart.php");
+
+
 
 ?>
 
@@ -339,9 +342,9 @@ include("php/cart.php");
 											
 											<?php 
 
-
+$totalBill =0;
 if(isset($items)){
-	$totalBill =0;
+	
 for ($i=0; $i <count($items) ; $i++) { 
 	echo '	<tr class="remove-data">
 										<td class="product"><a href="shop-product.php?item='.$items[$i]["productID"].'">'.$items[$i]["productName"].'</a> <small>Size: '.$items[$i]["size"].'</small></td>
@@ -362,7 +365,7 @@ for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) {
 	$total = $items[$i]["subtotal"] +$total;
 }
 $totalBill = $total + $totalBill;
-									echo '<td class="amount">$'.$total.'.00 </td>
+									echo '<td class="amount">$'.number_format(($total), 2, '.', '').'</td>
 									</tr>';
 										
 }
@@ -388,7 +391,7 @@ if (isset($items)) {
 
 
 
-echo '<td class="total-amount">$'.$totalBill.'.00</td>';
+echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 
 										?>
 											
@@ -397,7 +400,7 @@ echo '<td class="total-amount">$'.$totalBill.'.00</td>';
 										</tr>
 										<tr>
 											<td class="total-quantity" colspan="1">Discount Coupon</td>
-											<td class="price">TheProject25672</td>
+											<td class="price">Oops325479</td>
 											<td class="price">-20%</td>
 											
 											<?php 
@@ -413,8 +416,7 @@ if (isset($items)) {
 
 
 
-
-echo '<td class="total-amount">$'.($totalBill*0.2).'.00</td>';
+echo '<td class="total-amount">$'. number_format(($totalBill*0.2), 2, '.', '').'</td>';
 											
 											
 											?>
@@ -438,7 +440,7 @@ if (isset($items)) {
 
 
 
-echo '<td class="total-amount">$'.($totalBill*0.1).'.00</td>';
+echo '<td class="total-amount">$'.number_format(($totalBill*0.1), 2, '.', '').'</td>';
 											
 											
 											?>
@@ -467,7 +469,7 @@ if (isset($items)) {
 echo '<td class="total-quantity" colspan="3">Total</td>';
 
 
-echo '<td class="total-amount">$'.($totalBill+($totalBill*0.1)-($totalBill*0.2)+12).'.00</td>';
+echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.1)-($totalBill*0.2)+12), 2, '.', '').'</td>';
 
 										?>
 										
@@ -625,3 +627,40 @@ echo '<td class="total-amount">$'.($totalBill+($totalBill*0.1)-($totalBill*0.2)+
 
 	</body>
 </html>
+<?php 
+$ud = $_SESSION['id'];
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shopapparel";
+
+
+
+
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+
+$sql = "DELETE FROM `shopcart` WHERE UID = $ud ";
+
+
+if ($conn->query($sql) === TRUE) {
+	
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
+
+
+
+$conn->close();
+
+?>

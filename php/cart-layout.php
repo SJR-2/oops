@@ -13,8 +13,9 @@
 										
 													<div class="btn-group dropdown">
 														<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-basket-1"></i><span class="cart-count default-bg"><?php 
+														$totalQ=0;
 																	if (isset($items)) {
-																		$totalQ=0;
+																		
 										
 																			
 																					for ($i=0; $i <count($items) ; $i++) { 
@@ -22,6 +23,8 @@
 
 																					}
 																					echo $totalQ;
+																	}else{
+																		echo $totalQ;
 																	}
 																?></span></button>
 														<ul class="dropdown-menu dropdown-menu-right dropdown-animation cart">
@@ -50,10 +53,10 @@
 																				echo "<tr>";
 																				echo '<td class="quantity">'.$items[$i]["unitsInCart"].'</td>';
 																				echo '<td class="product"><a href="shop-product.php?item='.$items[$i]["productID"].'">'.$items[$i]["productName"].'</a><span class="small">'.$items[$i]["size"].'</span></td>';
-																				echo '<td class="amount">$'.$total.'.00</td>';
+																				echo '<td class="amount">$'.number_format($total, 2, '.', '').'</td>';
 																				echo "</tr>";
 																			}
-																		}
+																		
 																												$totalQ=0;
 										
 																			
@@ -61,11 +64,11 @@
 																					$totalQ = $items[$i]["unitsInCart"] + $totalQ;
 
 																					}
-																				
+																				}
 	
 																echo '	<tr>
 																			<td class="total-quantity" colspan="2">Total '.$totalQ.' Items</td>
-																			<td class="total-amount">$'.$totalBill.'.00</td>
+																			<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>
 																		</tr>';
 
 
@@ -76,6 +79,10 @@
 																</table>
 																<div class="panel-body text-right">
 																	<a href="shop-cart.php" class="btn btn-group btn-gray btn-sm">View Cart</a>
+																	<?php
+																	
+
+																	 ?>
 														<a href="shop-checkout-completed.php" class="btn btn-group btn-gray btn-sm">Checkout</a>
 																</div>
 															</li>

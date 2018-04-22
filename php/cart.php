@@ -1,5 +1,7 @@
 <?php
    //session_start(); 
+if (isset($_SESSION["username"])) {
+    # code...
 
 $servername = "localhost";
 $username = "root";
@@ -40,7 +42,7 @@ if($result->num_rows > 0) {
 $ud = $_SESSION['id'];
 
 $items = array();
-$ud = $_SESSION['id'];
+
 
 
 
@@ -65,7 +67,7 @@ $conn->close();
 
 
 
-
+}
 
 
 
