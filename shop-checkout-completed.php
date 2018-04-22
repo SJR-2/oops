@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+include("php/cart.php");
 
 ?>
 
@@ -335,45 +335,143 @@ session_start();
 									</thead>
 									<tbody>
 										<tr>
-											<td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-											<td class="price">$99.50 </td>
-											<td class="quantity">2 </td>
-											<td class="amount">$199.00 </td>
+											
+											
+											<?php 
+
+
+if(isset($items)){
+	$totalBill =0;
+for ($i=0; $i <count($items) ; $i++) { 
+	echo '	<tr class="remove-data">
+										<td class="product"><a href="shop-product.php?item='.$items[$i]["productID"].'">'.$items[$i]["productName"].'</a> <small>Size: '.$items[$i]["size"].'</small></td>
+										<td class="price">$'.$items[$i]["subtotal"].'.00 </td>
+										<td class="quantity">
+											<div class="form-group">
+												<div class="">'.$items[$i]["unitsInCart"].'</div>
+											</div>											
+										</td>
+										<form action="php/remove-cart.php" method="post">
+										<input type="hidden" name="id" value="'.$items[$i]["productID"].'">
+										<input type="hidden" name="units" value="'.$items[$i]["unitsInCart"].'">
+									
+										';
+$total =0;
+
+for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
+	$total = $items[$i]["subtotal"] +$total;
+}
+$totalBill = $total + $totalBill;
+									echo '<td class="amount">$'.$total.'.00 </td>
+									</tr>';
+										
+}
+}
+?>
 										</tr>
-										<tr>
-											<td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
-											<td class="price"> $99.66 </td>
-											<td class="quantity">3 </td>
-											<td class="amount">$299.00 </td>
-										</tr>
-										<tr>
-											<td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
-											<td class="price"> $499.66 </td>
-											<td class="quantity">3 </td>
-											<td class="amount">$1499.00 </td>
-										</tr>
+										
 										<tr>
 											<td class="total-quantity" colspan="3">Subtotal</td>
-											<td class="amount">$1997.00</td>
+											
+											<?php 
+
+										$totalQ=0;
+										
+if (isset($items)) {
+		for ($i=0; $i <count($items) ; $i++) { 
+		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
+
+										}
+}
+									
+
+
+
+
+echo '<td class="total-amount">$'.$totalBill.'.00</td>';
+
+										?>
+											
+											
+											
 										</tr>
 										<tr>
 											<td class="total-quantity" colspan="1">Discount Coupon</td>
 											<td class="price">TheProject25672</td>
 											<td class="price">-20%</td>
-											<td class="amount">-$399.40</td>
+											
+											<?php 
+											$totalQ=0;
+										
+if (isset($items)) {
+		for ($i=0; $i <count($items) ; $i++) { 
+		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
+
+										}
+}
+									
+
+
+
+
+echo '<td class="total-amount">$'.($totalBill*0.2).'.00</td>';
+											
+											
+											?>
+											
 										</tr>
 										<tr>
 											<td class="total-quantity" colspan="2">Sales Tax</td>
 											<td class="price">+10%</td>
-											<td class="amount">$159.76</td>
+											
+											<?php 
+											$totalQ=0;
+										
+if (isset($items)) {
+		for ($i=0; $i <count($items) ; $i++) { 
+		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
+
+										}
+}
+									
+
+
+
+
+echo '<td class="total-amount">$'.($totalBill*0.1).'.00</td>';
+											
+											
+											?>
+											
+											
 										</tr>
 										<tr>										
 											<td class="total-quantity" colspan="3">Shipping</td>
 											<td class="amount">$12.00</td>
 										</tr>
 										<tr>
-											<td class="total-quantity" colspan="3">Total 8 Items</td>
-											<td class="total-amount">$1769.36</td>
+											
+											
+											<?php 
+
+										$totalQ=0;
+										
+if (isset($items)) {
+		for ($i=0; $i <count($items) ; $i++) { 
+		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
+
+										}
+}
+									
+
+echo '<td class="total-quantity" colspan="3">Total</td>';
+
+
+echo '<td class="total-amount">$'.($totalBill+($totalBill*0.1)-($totalBill*0.2)+12).'.00</td>';
+
+										?>
+										
+										
 										</tr>
 									</tbody>
 								</table>
