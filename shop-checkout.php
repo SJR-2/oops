@@ -1,9 +1,8 @@
+
 <?php 
- session_start(); 
 
-	
-
-
+session_start(); 
+	 include("php/cart.php");
   if (!isset($_SESSION['username'])) {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: Login.php');
@@ -13,8 +12,10 @@
   	unset($_SESSION['username']);
   	header("location: Login.php");
   }
+?>
 
- include("php/cart.php");
+
+
 
 
 ?>
@@ -27,7 +28,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>OOPS | Shopping Cart</title>
+		<title>OOPS | Checkout</title>
 		<meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
 		<meta name="author" content="htmlcoder.me">
 
@@ -91,7 +92,7 @@
 		<!-- ================ -->
 		<div class="page-wrapper">
 		
-			<!-- header-container start -->
+				<!-- header-container start -->
 			<div class="header-container">
 				
 				
@@ -162,7 +163,7 @@
 								<!-- ================ -->
 								<div class="header-first clearfix">
 									
-					
+							
 									
 									<!-- logo -->
 									<div id="logo" class="logo" style="margin-bottom: 1em;">
@@ -206,29 +207,19 @@
 												</button>
 												
 											</div>
-<ul class="nav navbar-nav ">
 
-													<!-- mega-menu start -->
-													<!-- mega-menu end -->
-													<!-- mega-menu start -->
-													
-													<!-- mega-menu end -->
-													
-													<!-- mega-menu start -->
-													
-													<!-- mega-menu end -->
-												
-													
-														
-													
+											<!-- Collect the nav links, forms, and other content for toggling -->
+											<div class="collapse navbar-collapse" id="navbar-collapse-1">
+												<!-- main-menu -->
+												<ul class="nav navbar-nav ">	
 													<li class="active">
 														<a href="shop.php"  >Back To Shop</a>
 													
 
-													</li>
-													
-												</ul>
-											<?php include("php/cart-layout.php") ?>
+													</li></ul>
+												<!-- main-menu end -->
+												
+												<?php include("php/cart-layout.php") ?>
 												
 											</div>
 
@@ -252,6 +243,20 @@
 				<!-- header end -->
 			</div>
 			<!-- header-container end -->
+	
+								</div>
+								<!-- main-navigation end -->
+								</div>
+								<!-- header-second end -->
+					
+							</div>
+						</div>
+					</div>
+					
+				</header>
+				<!-- header end -->
+			</div>
+			<!-- header-container end -->
 		
 			<!-- breadcrumb start -->
 			<!-- ================ -->
@@ -259,13 +264,13 @@
 				<div class="container">
 					<ol class="breadcrumb">
 						<li><i class="fa fa-home pr-10"></i><a href="index-landing.php">Home</a></li>
-						<li class="active">Shopping Cart</li>
+						<li class="active">Checkout</li>
 					</ol>
 				</div>
 			</div>
 			<!-- breadcrumb end -->
 
-			<section class="main-container">
+				<section class="main-container">
 
 				<div class="container">
 					<div class="row">
@@ -315,10 +320,10 @@ for ($i=0; $i <count($items) ; $i++) {
 $total =0;
 
 for ($x=0; $x <$items[$i]["unitsInCart"] ; $x++) { 
-	$total = $items[$i]["subtotal"] +$total;
+	$total = $items[$x]["subtotal"] +$total;
 }
 $totalBill = $total + $totalBill;
-									echo '<td class="amount">$'.number_format($total, 2, '.', '').'</td>
+									echo '<td class="amount">$'.$total.'.00 </td>
 									</tr>';
 										
 }
@@ -350,7 +355,7 @@ if (isset($items)) {
 echo '<td class="total-quantity" colspan="4">Total '.$totalQ.' Items</td>';
 
 
-echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
+echo '<td class="total-amount">$'.$totalBill.'.00</td>';
 
 										?>
 										
@@ -360,7 +365,7 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 							</table>
 							<div class="text-right">	
 								
-								<a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a>
+								<a href="shop-checkout.php" class="btn btn-group btn-default">Checkout</a>
 							</div>
 
 						</div>
@@ -369,8 +374,9 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 					</div>
 				</div>
 			</section>
-			<!-- main-container end -->
-			<!-- section start -->
+			<!--  -->
+
+		<!-- section start -->
 			<!-- ================ -->
 			<section class="pv-30 dark-translucent-bg padding-bottom-clear" style="background-image:url('images/la.jpeg');background-position: 50% 32%; height: 25em;">
 				<div class="container">
@@ -414,6 +420,7 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 			<!-- section end -->
 
 			
+	
 
 			<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
 			<!-- ================ -->
