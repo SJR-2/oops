@@ -3,7 +3,7 @@ session_cache_limiter('nocache');
 header('Expires: ' . gmdate('r', 0));
 header('Content-type: application/json');
 
-$Recipient = 'set_your_email_here@domain.com'; // <-- Set your email here
+$Recipient = 'shop@oops616.com'; // <-- Set your email here
 
 if($Recipient) {
 

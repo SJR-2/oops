@@ -17,7 +17,6 @@ include("php/cart.php");
 
 
 ?>
-
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="zxx" class="ie9"> <![endif]-->
 <!--[if gt IE 9]> <html lang="zxx" class="ie"> <![endif]-->
@@ -638,6 +637,7 @@ echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.1)-($t
 
 	</body>
 </html>
+
 <?php 
 $ud = $_SESSION['id'];
 $servername = "localhost";
@@ -668,7 +668,38 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+$amount=0;
+$id =0;
 
+
+// for ($i=0; $i <count($items) ; $i++) { 
+// 	$amount =0;
+// 	$id=0;
+// 	$amount = $items[$i]["unitsInCart"];
+// 	$id = $items[$i]["productID"];
+
+// 	$sql = "SELECT stock FROM `shopapparel` WHERE ID =$id";
+	
+// 	if ($result=mysqli_query($con,$sql)){
+
+// $row = mysqli_fetch_assoc($result);
+// }
+// $stck =0;
+// echo "stck". $stck. "<br>";
+// $stck = $row["stock"];
+
+// $amount = $stck - $amount;
+
+
+
+// 	$sql = "UPDATE `shopapparel` SET `stock`= $amount  WHERE ID =$id ";
+
+// 	if ($conn->query($sql) === TRUE) {
+//     echo "Record updated successfully ";
+// } else {
+//     echo "Error updating record: " . $conn->error;
+// }
+// }
 
 
 
