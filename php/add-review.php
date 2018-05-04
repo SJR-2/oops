@@ -15,14 +15,15 @@ if ($conn->connect_error) {
 }
 
 
+$name = htmlspecialchars($_POST["name4"]);
+$subject = htmlspecialchars($_POST["subject4"]);
+$rating = htmlspecialchars($_POST["review"]);
+$message = htmlspecialchars($_POST["message"]);
+$buyagain = htmlspecialchars($_POST["buyAgain"]);
+$productname = htmlspecialchars($_POST["clothingname"]);
+$productId = htmlspecialchars($_POST["item"]);
 
-$name = $_POST['name4'];
-$subject= $_POST['subject4'];
-$rating= $_POST['review'];
-$message= $_POST['message4'];
-$buyagain= $_POST['buyAgain'];
-$productname= $_POST['clothingname'];
-$productId = $_POST["item"];
+
 
 
 echo $name.'<br>';
