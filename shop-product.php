@@ -4,7 +4,8 @@ include("php/cart.php");
 
 
 // get value after link is clicked for out fit
-$val = $_GET["item"];
+$val = htmlspecialchars($_GET["item"]);
+//$val = $_GET["item"];
 
 // gets server information
 $servername = "localhost";

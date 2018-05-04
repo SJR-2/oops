@@ -33,7 +33,7 @@
 
 		<!-- Mobile Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="images/favicon.ico">
 
@@ -358,6 +358,46 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 									</tr>
 								</tbody>
 							</table>
+							
+  <div id="paypal-button"></div>
+
+  <script>
+    paypal.Button.render({
+      env: 'production', // Or 'sandbox',
+
+      commit: true, // Show a 'Pay Now' button
+
+      style: {
+        color: 'gold',
+        size: 'small'
+      },
+
+      payment: function(data, actions) {
+        /* 
+         * Set up the payment here 
+         */
+      },
+
+      onAuthorize: function(data, actions) {
+        /* 
+         * Execute the payment here 
+         */
+      },
+
+      onCancel: function(data, actions) {
+        /* 
+         * Buyer cancelled the payment 
+         */
+      },
+
+      onError: function(err) {
+        /* 
+         * An error occurred during the transaction 
+         */
+      }
+    }, '#paypal-button');
+  </script>
+
 							<div class="text-right">	
 								
 								<a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a>
