@@ -13,7 +13,7 @@ echo "ID: ". $_POST["productID"]. "<br>";
 echo "UID".$uid;
 
 $productId = $_POST["productID"];
-$quantity = $_POST["quantity"];
+$quantity = htmlspecialchars($_POST["quantity"]);
 $color = $_POST["color"];
 $size = $_POST["size"];
 $subtotal = $_POST["price"];
