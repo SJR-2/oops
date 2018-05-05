@@ -359,48 +359,66 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 								</tbody>
 							</table>
 							
-  <div id="paypal-button"></div>
+       <div id="paypal-button-container"></div>
 
-  <script>
-    paypal.Button.render({
-      env: 'production', // Or 'sandbox',
+    <script>
+        paypal.Button.render({
 
-      commit: true, // Show a 'Pay Now' button
+            env: 'sandbox', // sandbox | production
 
-      style: {
-        color: 'gold',
-        size: 'small'
-      },
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+            client: {
+                sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                production: 'AVKGidCMv2fhW48O7UBYILPUPOZjXW2WYUk7EwkTjOTUzb6-Wu9wZQm9KkxdLA6oNHCW-lsv01O6rd4V'
+            },
 
-      payment: function(data, actions) {
-        /* 
-         * Set up the payment here 
-         */
-      },
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
 
-      onAuthorize: function(data, actions) {
-        /* 
-         * Execute the payment here 
-         */
-      },
+            // payment() is called when the button is clicked
+            payment: function(data, actions) {
 
-      onCancel: function(data, actions) {
-        /* 
-         * Buyer cancelled the payment 
-         */
-      },
+                // Make a call to the REST api to create the payment
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
 
-      onError: function(err) {
-        /* 
-         * An error occurred during the transaction 
-         */
-      }
-    }, '#paypal-button');
-  </script>
+                                amount: { total: '0.01', currency: 'USD' }
+                               
+                         
+                            }
+
+                        ] 
+                    }
+                });
+            },
+
+            // onAuthorize() is called when the buyer approves the payment
+            onAuthorize: function(data, actions) {
+
+                // Make a call to the REST api to execute the payment
+                return actions.payment.execute().then(function() {
+                    window.alert('Payment Complete!');
+                    loadDoc();
+                
+                   
+                });
+            }
+
+
+
+        }, '#paypal-button-container');
+                              function loadDoc() {
+                              	window.location.replace("shop-checkout-completed.php");
+
+}
+    </script>
 
 							<div class="text-right">	
 								
-								<a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a>
+								<!-- <a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a> -->
 							</div>
 
 						</div>
