@@ -366,12 +366,12 @@ echo '<tr><td>Tax added</td><td></td><td></td><td></td><td class="total-amount">
     <script>
         paypal.Button.render({
 
-            env: 'production', // sandbox | production
+            env: 'sandbox', // sandbox | production
 
             // PayPal Client IDs - replace with your own
             // Create a PayPal app: https://developer.paypal.com/developer/applications/create
             client: {
-                sandbox:    'xxxxx',
+                sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
                 production: 'xxxxx'
 
 

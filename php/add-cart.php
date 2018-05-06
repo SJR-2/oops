@@ -12,6 +12,7 @@ echo "type: ". $_POST["productType"]. "<br>";
 echo "ID: ". $_POST["productID"]. "<br>";
 echo "UID".$uid;
 
+
 $productId = $_POST["productID"];
 $quantity = htmlspecialchars($_POST["quantity"]);
 $color = $_POST["color"];

@@ -351,7 +351,7 @@ $size = array("M", "L", "XL");
 												</div> -->
 											</div>
 														<?php
-											$val = $_GET["item"];
+										$val = htmlspecialchars($_GET["item"]);
 								
 	
 											
@@ -384,7 +384,7 @@ $size = array("M", "L", "XL");
 									<hr class="mb-10">
 									<div class="clearfix mb-20">
 										<?php
-											$val = $_GET["item"];
+										$val = htmlspecialchars($_GET["item"]);
 								// gets server information
 $servername = "localhost";
 $username = "root";
@@ -546,7 +546,7 @@ $conn->close();
 							<ul class="nav nav-tabs style-4" role="tablist">
 								<!-- <li class="active"><a href="#h2tab2" role="tab" data-toggle="tab"><i class="fa fa-files-o pr-5"></i>Specifications</a></li> -->
 									<?php 
-									$val = $_GET["item"];
+									$val = htmlspecialchars($_GET["item"]);
 									include("php/clothing-rating.php");
 									$totalReviews =0;
 									for ($i=0; $i <count($review) ; $i++) { 
@@ -567,7 +567,7 @@ $conn->close();
 									<!-- comments start -->
 									<?php 
 									include("php/clothing-rating.php");
-									$val = $_GET["item"];
+									$val = htmlspecialchars($_GET["item"]);
 									for ($i=0; $i <count($review) ; $i++) { 
 								
 									if (isset($review) && $review[$i]['id'] == $val) {
@@ -615,7 +615,7 @@ $conn->close();
 										<h2 class="title">Add your Review</h2>
 										<form role="form" id="comment-form" action="php/add-review.php" method="post">
 											<?php 
-													$itemId = $_GET['item'];
+													$itemId =htmlspecialchars($_GET["item"]);
 
 											echo '<input type="hidden" name="item" value="'.$itemId.'">'; 
 
