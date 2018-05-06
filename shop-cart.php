@@ -352,7 +352,7 @@ echo '<td class="total-quantity" colspan="4">Total '.$totalQ.' Items</td>';
 
 echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td></tr>';
 
-echo '<tr><td></td><td></td><td></td><td></td><td class="total-amount">$'.number_format($totalBill*0.06+$totalBill, 2, '.', '').'</td>';
+echo '<tr><td>Tax added</td><td></td><td></td><td></td><td class="total-amount">$'.number_format($totalBill*0.06+$totalBill, 2, '.', '').'</td>';
 
 										?>
 										
@@ -371,8 +371,8 @@ echo '<tr><td></td><td></td><td></td><td></td><td class="total-amount">$'.number
             // PayPal Client IDs - replace with your own
             // Create a PayPal app: https://developer.paypal.com/developer/applications/create
             client: {
-                sandbox:    'xxx',
-                production: 'xxx'
+                sandbox:    'xxxxx',
+                production: 'xxxxx'
 
 
             },
