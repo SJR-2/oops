@@ -408,33 +408,10 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 											
 											
 										</tr>
-										<tr>
-											<td class="total-quantity" colspan="1">Discount Coupon</td>
-											<td class="price">Oops325479</td>
-											<td class="price">-20%</td>
-											
-											<?php 
-											$totalQ=0;
 										
-if (isset($items)) {
-		for ($i=0; $i <count($items) ; $i++) { 
-		$totalQ = $items[$i]["unitsInCart"] + $totalQ;
-
-										}
-}
-									
-
-
-
-echo '<td class="total-amount">$'. number_format(($totalBill*0.2), 2, '.', '').'</td>';
-											
-											
-											?>
-											
-										</tr>
 										<tr>
 											<td class="total-quantity" colspan="2">Sales Tax</td>
-											<td class="price">+10%</td>
+											<td class="price">+6%</td>
 											
 											<?php 
 											$totalQ=0;
@@ -450,18 +427,18 @@ if (isset($items)) {
 
 
 
-echo '<td class="total-amount">$'.number_format(($totalBill*0.1), 2, '.', '').'</td>';
+echo '<td class="total-amount">$'.number_format(($totalBill*0.06), 2, '.', '').'</td>';
 											
 											
 											?>
 											
 											
 										</tr>
-										<tr>										
+										<!-- <tr>										
 											<td class="total-quantity" colspan="3">Shipping</td>
 											<td class="amount">$12.00</td>
 										</tr>
-										<tr>
+										<tr> -->
 											
 											
 											<?php 
@@ -479,7 +456,7 @@ if (isset($items)) {
 echo '<td class="total-quantity" colspan="3">Total</td>';
 
 
-echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.1)-($totalBill*0.2)+12), 2, '.', '').'</td>';
+echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.06)), 2, '.', '').'</td>';
 
 										?>
 										
@@ -637,7 +614,41 @@ echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.1)-($t
 
 	</body>
 </html>
+<?php
+$to = "smj.johnsonjr@gmail.com, swd6070@wmich.edu";
+$subject = "HTML email";
 
+$message = "
+<html>
+<head>
+<title>HTML email</title>
+</head>
+<body>
+<p>This email contains HTML Tags!</p>
+<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+</tr>
+<tr>
+<td>John</td>
+<td>Doe</td>
+</tr>
+</table>
+</body>
+</html>
+";
+
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <webmaster@example.com>' . "\r\n";
+$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+mail($to,$subject,$message,$headers);
+?>
 <?php 
 $ud = $_SESSION['id'];
 $servername = "localhost";

@@ -350,7 +350,9 @@ if (isset($items)) {
 echo '<td class="total-quantity" colspan="4">Total '.$totalQ.' Items</td>';
 
 
-echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
+echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td></tr>';
+
+echo '<tr><td></td><td></td><td></td><td></td><td class="total-amount">$'.number_format($totalBill*0.06+$totalBill, 2, '.', '').'</td>';
 
 										?>
 										
@@ -364,13 +366,15 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
     <script>
         paypal.Button.render({
 
-            env: 'sandbox', // sandbox | production
+            env: 'production', // sandbox | production
 
             // PayPal Client IDs - replace with your own
             // Create a PayPal app: https://developer.paypal.com/developer/applications/create
             client: {
-                sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                production: 'AVKGidCMv2fhW48O7UBYILPUPOZjXW2WYUk7EwkTjOTUzb6-Wu9wZQm9KkxdLA6oNHCW-lsv01O6rd4V'
+                sandbox:    'xxx',
+                production: 'xxx'
+
+
             },
 
             // Show the buyer a 'Pay Now' button in the checkout flow
@@ -382,15 +386,30 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
                 // Make a call to the REST api to create the payment
                 return actions.payment.create({
                     payment: {
-                        transactions: [
+                        "transactions": [
                             {
 
-                                amount: { total: '0.01', currency: 'USD' }
+                               "amount": { total: "<?php echo $totalBill*0.06+$totalBill ?>", currency: 'USD'}, "description": "<?php for ($i = 0; $i < count($items); $i++) {
+
+                               	$totalQ=0;
+										
+
+		$totalQ = $items[$i]["unitsInCart"];
+
+							
+
+
+                               	echo $items[$i]["productName"]."     quantity: ". $totalQ. "<br>"."size: " .$items[$i]["size"]."<br>";
+                               }  ?>",
+
+
                                
                          
                             }
 
                         ] 
+
+
                     }
                 });
             },
@@ -400,7 +419,7 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
 
                 // Make a call to the REST api to execute the payment
                 return actions.payment.execute().then(function() {
-                    window.alert('Payment Complete!');
+   
                     loadDoc();
                 
                    
@@ -417,7 +436,7 @@ echo '<td class="total-amount">$'.number_format($totalBill, 2, '.', '').'</td>';
     </script>
 
 							<div class="text-right">	
-								
+							
 								<!-- <a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a> -->
 							</div>
 
