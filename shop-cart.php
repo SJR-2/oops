@@ -4,10 +4,7 @@
 	
 
 
-  if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: Login.php');
-  }
+
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
@@ -389,7 +386,10 @@ echo '<tr><td>Tax added</td><td></td><td></td><td></td><td class="total-amount">
                         "transactions": [
                             {
 
-                               "amount": { total: "<?php echo $totalBill*0.06+$totalBill ?>", currency: 'USD'}, "description": "<?php for ($i = 0; $i < count($items); $i++) {
+                               "amount": { total: "<?php echo $totalBill*0.06+$totalBill ?>", currency: 'USD'}, "quantity": "<?php $total=0; for ( $i = 0; $i < count($items); $i++) {
+                              
+                              $total = $items[$i]["unitsInCart"] + $total;
+                               } echo $total ?>" ,"description": "<?php for ($i = 0; $i < count($items); $i++) {
 
                                	$totalQ=0;
 										
@@ -437,7 +437,7 @@ echo '<tr><td>Tax added</td><td></td><td></td><td></td><td class="total-amount">
 
 							<div class="text-right">	
 							
-								<!-- <a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a> -->
+								<a href="shop-checkout-completed.php" class="btn btn-group btn-default">Checkout</a>
 							</div>
 
 						</div>

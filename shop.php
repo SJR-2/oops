@@ -1,15 +1,24 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: Login.php');
-  }
+  if (!isset($_SESSION['username']) && !isset($_SESSION['id'])) {
+
+
+
+	$_SESSION['id'] = rand(1000,1000000000);
+	
+
+
+
+
+
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
   	header("location: Login.php");
   }
+}
+
 ?>
 <?php 
 	include("php/clothing-name.php");

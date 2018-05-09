@@ -5,10 +5,11 @@ include("php/cart.php");
 
  
 
-  if (!isset($_SESSION['username'])) {
-  	$_SESSION['msg'] = "You must log in first";
-  	header('location: Login.php');
-  }
+  // if (!isset($_SESSION['username'])) {
+  // 	$_SESSION['msg'] = "You must log in first";
+  // 	header('location: Login.php');
+  // }
+
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
@@ -331,7 +332,16 @@ include("php/cart.php");
 								<!-- 		<p class="text-right small"><strong>Invoice #001</strong> <br> May 15, 2015</p> -->
 										<h5 class="text-right">Client</h5>
 										<p class="text-right small">
-											<?php echo '<strong>User name:</strong> <span>'.$_SESSION["username"].'</span> <br>'; ?>
+											<?php
+
+											if (isset($_SESSION["username"])) {
+													 echo '<strong>User name:</strong> <span>'.$_SESSION["username"].'</span> <br>';
+											}else if (isset($_SESSION['id'])) {
+												echo '<strong>User ID:</strong> <span>'.$_SESSION["id"].'</span> <br>';
+											}{
+											
+										}
+										?>
 			
 										</p>
 									</div>
@@ -615,7 +625,7 @@ echo '<td class="total-amount">$'.number_format(($totalBill+($totalBill*0.06)), 
 	</body>
 </html>
 <?php
-$to = "smj.johnsonjr@gmail.com, swd6070@wmich.edu";
+$to = "smj.johnsonjr@gmail.com";
 $subject = "HTML email";
 
 $message = "
@@ -673,14 +683,19 @@ $sql = "DELETE FROM `shopcart` WHERE UID = $ud ";
 
 
 if ($conn->query($sql) === TRUE) {
+	if (!isset($_SESSION['username'])) {
+	session_destroy();
+  	unset($_SESSION['id']);
+	destroy($_SESSION['id']);
+	}
 	
-    echo "New record created successfully";
+   // echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-$amount=0;
-$id =0;
+// $amount=0;
+// $id =0;
 
 
 // for ($i=0; $i <count($items) ; $i++) { 
